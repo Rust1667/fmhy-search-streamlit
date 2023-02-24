@@ -1,9 +1,9 @@
 ## Streamlit
 import streamlit as st
 
-st.title("FMHY Search - Web Version")
+st.title("Search FMHY")
 
-queryInput = st.text_input("Enter search query")
+queryInput = st.text_input("")
 
 
 
