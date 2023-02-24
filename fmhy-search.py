@@ -106,7 +106,7 @@ def doASearch():
     print("Printing " + str(len(linesFound)) + " search results:\n")
     st.text(str(len(linesFound)) + " search results:\n")
     print(textToPrint)
-    st.text(textToPrint)
+    st.markdown(textToPrint)
     print("\nSearch ended with " + str(len(linesFound)) + " results found.\n")
 
     #title section results
