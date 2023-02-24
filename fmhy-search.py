@@ -92,7 +92,7 @@ lineList = getAllLines()
 def doASearch():
     #intro
 #    print("STARTING NEW SEARCH...\n")
-#    searchInput = queryInput #input("Type a search string:     ")
+    searchInput = queryInput #input("Type a search string:     ")
 
     #make sure the input is right before continuing
 #    if searchInput == "exit" or searchInput == "":
