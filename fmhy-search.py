@@ -3,7 +3,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="FMHY Search",
-    page_icon="https://fmhy.tk/favicon.ico",
+    page_icon="🧊",
     layout="wide",
     initial_sidebar_state="auto",
     menu_items={
