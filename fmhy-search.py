@@ -3,7 +3,7 @@ import streamlit as st
 
 #{'Wiki': 'https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/', 'Raw': "https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page", 'About': "https://github.com/Rust1667/a FMHY-search-engine"}
 
-st.set_page_config(page_title="FMHY Search", page_icon=None, layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title="FMHY Search", page_icon="https://fmhy.tk/favicon.ico", layout="centered", initial_sidebar_state="auto", menu_items=None)
 
 #st.image("https://i.imgur.com/s9abZgP.png", width=60)
 st.title("Search FMHY")
