@@ -5,7 +5,7 @@ st.set_page_config(
     page_title="FMHY Search",
     page_icon="https://fmhy.tk/favicon.ico",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
     menu_items={
         'Get Help': 'https://github.com/Rust1667/a FMHY-search-engine',
         'Report a bug': "https://github.com/Rust1667/a FMHY-search-engine",
