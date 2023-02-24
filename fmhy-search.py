@@ -1,3 +1,7 @@
+import streamlit as st
+
+st.title("FMHY Search - Web Version")
+
 import requests
 
 #enable text coloring only if the requirements are met
