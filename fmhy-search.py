@@ -5,7 +5,7 @@ st.set_page_config(
     page_title="FMHY Search",
     page_icon="https://fmhy.tk/favicon.ico",
     layout="wide",
-    initial_sidebar_state="auto",
+    initial_sidebar_state="expanded",
     menu_items={
         'Get Help': 'https://github.com/Rust1667/a FMHY-search-engine',
         'Report a bug': "https://github.com/Rust1667/a FMHY-search-engine",
@@ -137,5 +137,10 @@ if(st.button("Search")):
     queryInput = queryInput.title()
     doASearch()
 
-#with st.sidebar:
-#    st.markdown("[FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/)")
+with st.sidebar:
+    st.markdown("[Wiki on Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/)")
+    st.markdown("[Wiki as Raw Markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page")
+    st.markdown("[Repository for this search tool](https://github.com/Rust1667/a FMHY-search-engine)")
+    st.markdown("[List of Search tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
+
+
