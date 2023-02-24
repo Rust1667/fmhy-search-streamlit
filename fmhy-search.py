@@ -1,7 +1,7 @@
 ## Streamlit
 import streamlit as st
 
-st.image("https://i.imgur.com/s9abZgP.png")
+st.image("https://i.imgur.com/s9abZgP.png", width=100)
 st.title("Search FMHY")
 
 queryInput = st.text_input("")
@@ -126,5 +126,5 @@ if(st.button("Search")):
     queryInput = queryInput.title()
     doASearch()
 
-with st.sidebar:
-    st.markdown("[FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/)")
+#with st.sidebar:
+#    st.markdown("[FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/)")
