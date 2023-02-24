@@ -5,10 +5,7 @@ st.title("FMHY Search - Web Version")
 
 queryInput = st.text_input("Enter search query", "…")
 
-if(st.button("Start")):
-    queryInput = queryInput.title()
-    st.text("Search started for "+queryInput)
-    doASearch()
+
 
 
 import requests
@@ -119,4 +116,9 @@ def doASearch():
     #print("\n\n\n")   
     #doASearch()
 
+
+if(st.button("Start")):
+    queryInput = queryInput.title()
+    st.text("Search started for "+queryInput)
+    doASearch()
 
