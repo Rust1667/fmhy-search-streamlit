@@ -139,7 +139,7 @@ if(st.button("Search")):
     doASearch()
 
 with st.sidebar:
-    st.markdown("[Wiki on Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/)")
+    st.markdown("[Wiki on Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/)")
     st.markdown("[Wiki as Raw Markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page)")
     st.markdown("[Repository for this search tool](https://github.com/Rust1667/a-FMHY-search-engine)")
     st.markdown("[List of Search tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
