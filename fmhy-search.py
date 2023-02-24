@@ -1,7 +1,7 @@
 ## Streamlit
 import streamlit as st
 
-st.image("https://i.imgur.com/s9abZgP.png", width=100)
+st.image("https://i.imgur.com/s9abZgP.png", width=50)
 st.title("Search FMHY")
 
 queryInput = st.text_input("")
