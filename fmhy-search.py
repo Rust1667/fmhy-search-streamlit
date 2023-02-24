@@ -17,7 +17,7 @@ st.set_page_config(
 st.title("Search FMHY")
 
 
-queryInput = st.text_input(label="search query", value="")
+queryInput = st.text_input(label=" ", value="")
 
 
 import requests
