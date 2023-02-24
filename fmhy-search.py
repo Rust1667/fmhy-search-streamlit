@@ -9,7 +9,7 @@ st.set_page_config(
     menu_items={
         'Get Help': 'https://github.com/Rust1667/a-FMHY-search-engine',
         'Report a bug': "https://github.com/Rust1667/a-FMHY-search-engine",
-        'About': "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/"
+        'About': "https://github.com/Rust1667/a-FMHY-search-engine"
     }
 )
 
