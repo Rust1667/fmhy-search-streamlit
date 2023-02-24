@@ -104,6 +104,7 @@ def doASearch():
     else:
         textToPrint = "\n\n".join(linesFound)
     print("Printing " + str(len(linesFound)) + " search results:\n")
+    st.text(str(len(linesFound)) + " search results:\n")
     print(textToPrint)
     st.text(textToPrint)
     print("\nSearch ended with " + str(len(linesFound)) + " results found.\n")
@@ -111,15 +112,16 @@ def doASearch():
     #title section results
     if len(sectionTitleList)>0:
         print("Also there are these section titles: ")
+        st.text("Also there are these section titles: ")
         print("\n".join(sectionTitleList))
+        st.text("\n".join(sectionTitleList))
 
     #repeat the search
     #print("\n\n\n")   
     #doASearch()
 
 
-if(st.button("Start")):
+if(st.button("Search")):
     queryInput = queryInput.title()
-    st.text("Search started for "+queryInput)
     doASearch()
 
