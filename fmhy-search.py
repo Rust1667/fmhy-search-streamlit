@@ -1,6 +1,15 @@
+## Streamlit
 import streamlit as st
 
 st.title("FMHY Search - Web Version")
+
+queryInput = st.text_input("Enter search query", "…")
+
+if(st.button("Start")):
+    queryInput = queryInput.title()
+    st.text("Search started for "+queryInput)
+    doASearch()
+
 
 import requests
 
@@ -63,11 +72,18 @@ def colorLinesFound(linesFound, filterWords):
         coloredLinesList.append(coloredLine)
     return coloredLinesList
 
+#---------
+
+lineList = getAllLines()
+# print("Search examples: 'youtube frontend', 'streaming site', 'rare movies', 'userscripts'... You can also type 'exit' or nothing to close the script.\n")
+# doASearch()
+
+
 
 def doASearch():
     #intro
     print("STARTING NEW SEARCH...\n")
-    searchInput = input("Type a search string:     ")
+    searchInput = queryInput #input("Type a search string:     ")
 
     #make sure the input is right before continuing
     if searchInput == "exit" or searchInput == "":
@@ -98,11 +114,9 @@ def doASearch():
     if len(sectionTitleList)>0:
         print("Also there are these section titles: ")
         print("\n".join(sectionTitleList))
-    
-    #repeat the search
-    print("\n\n\n")   
-    doASearch()
 
-lineList = getAllLines()
-print("Search examples: 'youtube frontend', 'streaming site', 'rare movies', 'userscripts'... You can also type 'exit' or nothing to close the script.\n")
-doASearch()
+    #repeat the search
+    #print("\n\n\n")   
+    #doASearch()
+
+
