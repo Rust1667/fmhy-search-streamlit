@@ -23,13 +23,13 @@ queryInput = st.text_input("")
 import requests
 
 #enable text coloring only if the requirements are met
-coloring = True
-try:
-    from termcolor import colored
-    import colorama
-    colorama.init()
-except:
-    coloring = False
+coloring = False
+#try:
+#    from termcolor import colored
+#    import colorama
+#    colorama.init()
+#except:
+#    coloring = False
 
 
 def splitSentenceIntoWords(searchInput):
@@ -65,21 +65,21 @@ def filterOutTitleLines(lineList):
     return [filteredList, sectionTitleList]
 
 
-def highlightWord(sentence, word):
-    return sentence.replace(word, colored(word,'red'))
-
-def colorLinesFound(linesFound, filterWords):
-    coloredLinesList = []
-    filterWordsCapitalizedToo=[]
-    for word in filterWords:
-        filterWordsCapitalizedToo.append(word.capitalize())
-    filterWordsCapitalizedToo.extend(filterWords)
-    for line in linesFound:
-        for word in filterWordsCapitalizedToo:
-            line = highlightWord(line, word)
-        coloredLine = line
-        coloredLinesList.append(coloredLine)
-    return coloredLinesList
+#def highlightWord(sentence, word):
+#    return sentence.replace(word, colored(word,'red'))
+#
+#def colorLinesFound(linesFound, filterWords):
+#    coloredLinesList = []
+#    filterWordsCapitalizedToo=[]
+#    for word in filterWords:
+#        filterWordsCapitalizedToo.append(word.capitalize())
+#    filterWordsCapitalizedToo.extend(filterWords)
+#    for line in linesFound:
+#        for word in filterWordsCapitalizedToo:
+#            line = highlightWord(line, word)
+#        coloredLine = line
+#        coloredLinesList.append(coloredLine)
+#    return coloredLinesList
 
 #---------
 
