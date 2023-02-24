@@ -22,15 +22,6 @@ queryInput = st.text_input(label=" ", value="")
 
 import requests
 
-#enable text coloring only if the requirements are met
-coloring = False
-#try:
-#    from termcolor import colored
-#    import colorama
-#    colorama.init()
-#except:
-#    coloring = False
-
 
 def splitSentenceIntoWords(searchInput):
     searchInput = searchInput.lower()
@@ -65,44 +56,24 @@ def filterOutTitleLines(lineList):
     return [filteredList, sectionTitleList]
 
 
-#def highlightWord(sentence, word):
-#    return sentence.replace(word, colored(word,'red'))
-#
-#def colorLinesFound(linesFound, filterWords):
-#    coloredLinesList = []
-#    filterWordsCapitalizedToo=[]
-#    for word in filterWords:
-#        filterWordsCapitalizedToo.append(word.capitalize())
-#    filterWordsCapitalizedToo.extend(filterWords)
-#    for line in linesFound:
-#        for word in filterWordsCapitalizedToo:
-#            line = highlightWord(line, word)
-#        coloredLine = line
-#        coloredLinesList.append(coloredLine)
-#    return coloredLinesList
 
-#---------
 
 lineList = getAllLines()
-# print("Search examples: 'youtube frontend', 'streaming site', 'rare movies', 'userscripts'... You can also type 'exit' or nothing to close the script.\n")
-# doASearch()
+
 
 
 
 def doASearch():
-    #intro
-#    print("STARTING NEW SEARCH...\n")
-    searchInput = queryInput #input("Type a search string:     ")
+
+    searchInput = queryInput
 
     #make sure the input is right before continuing
-#    if searchInput == "exit" or searchInput == "":
-#        print("The script is closing...")
-#        return
+    if len(searchInput) < 3:
+        return
 
     #intro to the search results
     myFilterWords = splitSentenceIntoWords(searchInput)
-    #print("Looking for lines that contain all of these words:")
-    #print(myFilterWords)
+
     print("searching: " + searchInput)
 
     #main results
@@ -111,27 +82,20 @@ def doASearch():
     linesFoundAll = filterOutTitleLines(linesFoundPrev)
     linesFound = linesFoundAll[0]
     sectionTitleList = linesFoundAll[1]
-    if coloring == True:
-        linesFoundColored = colorLinesFound(linesFound, myFilterWords)
-        textToPrint = "\n\n".join(linesFoundColored)
-    else:
-        textToPrint = "\n\n".join(linesFound)
-    #print("Printing " + str(len(linesFound)) + " search results:\n")
+
+    #make sure results are not too many before continuing
+    if len(linesFound) > 500:
+        return
+
+    textToPrint = "\n\n".join(linesFound)
     st.text(str(len(linesFound)) + " search results:\n")
-    #print(textToPrint)
     st.markdown(textToPrint)
-    #print("\nSearch ended with " + str(len(linesFound)) + " results found.\n")
 
     #title section results
     if len(sectionTitleList)>0:
-        #print("Also there are these section titles: ")
         st.text("Also there are these section titles: ")
-        #print("\n".join(sectionTitleList))
         st.text("\n".join(sectionTitleList))
 
-    #repeat the search
-    #print("\n\n\n")   
-    #doASearch()
 
 
 if(st.button("Search")):
