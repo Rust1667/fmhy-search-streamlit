@@ -125,3 +125,5 @@ if(st.button("Search")):
     queryInput = queryInput.title()
     doASearch()
 
+with st.sidebar:
+    st.markdown("[FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/)")
