@@ -2,14 +2,14 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Ex-stream-ly Cool App",
-    page_icon="🧊",
+    page_title="FMHY Search",
+    page_icon="https://fmhy.tk/favicon.ico",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
     menu_items={
-        'Wiki': 'https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
+        'Get Help': 'https://github.com/Rust1667/a FMHY-search-engine',
+        'Report a bug': "https://github.com/Rust1667/a FMHY-search-engine",
+        'About': "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/"
     }
 )
 
