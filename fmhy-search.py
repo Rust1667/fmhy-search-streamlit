@@ -105,6 +105,7 @@ def doASearch():
         textToPrint = "\n\n".join(linesFound)
     print("Printing " + str(len(linesFound)) + " search results:\n")
     print(textToPrint)
+    st.text(textToPrint)
     print("\nSearch ended with " + str(len(linesFound)) + " results found.\n")
 
     #title section results
