@@ -1,16 +1,11 @@
 ## Streamlit
 import streamlit as st
 
-col1, col2 = st.columns(2)
-with col1:
-    st.image("https://i.imgur.com/s9abZgP.png", width=60)
-with col2:
-    st.title("Search FMHY")
+#st.image("https://i.imgur.com/s9abZgP.png", width=60)
+st.title("Search FMHY")
 
 
 queryInput = st.text_input("")
-
-
 
 
 import requests
