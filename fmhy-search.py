@@ -91,18 +91,19 @@ lineList = getAllLines()
 
 def doASearch():
     #intro
-    print("STARTING NEW SEARCH...\n")
-    searchInput = queryInput #input("Type a search string:     ")
+#    print("STARTING NEW SEARCH...\n")
+#    searchInput = queryInput #input("Type a search string:     ")
 
     #make sure the input is right before continuing
-    if searchInput == "exit" or searchInput == "":
-        print("The script is closing...")
-        return
+#    if searchInput == "exit" or searchInput == "":
+#        print("The script is closing...")
+#        return
 
     #intro to the search results
     myFilterWords = splitSentenceIntoWords(searchInput)
-    print("Looking for lines that contain all of these words:")
-    print(myFilterWords)
+    #print("Looking for lines that contain all of these words:")
+    #print(myFilterWords)
+    print("searching: " + searchInput)
 
     #main results
     myLineList = lineList
@@ -115,17 +116,17 @@ def doASearch():
         textToPrint = "\n\n".join(linesFoundColored)
     else:
         textToPrint = "\n\n".join(linesFound)
-    print("Printing " + str(len(linesFound)) + " search results:\n")
+    #print("Printing " + str(len(linesFound)) + " search results:\n")
     st.text(str(len(linesFound)) + " search results:\n")
-    print(textToPrint)
+    #print(textToPrint)
     st.markdown(textToPrint)
-    print("\nSearch ended with " + str(len(linesFound)) + " results found.\n")
+    #print("\nSearch ended with " + str(len(linesFound)) + " results found.\n")
 
     #title section results
     if len(sectionTitleList)>0:
-        print("Also there are these section titles: ")
+        #print("Also there are these section titles: ")
         st.text("Also there are these section titles: ")
-        print("\n".join(sectionTitleList))
+        #print("\n".join(sectionTitleList))
         st.text("\n".join(sectionTitleList))
 
     #repeat the search
