@@ -69,6 +69,7 @@ def doASearch():
 
     #make sure the input is right before continuing
     if len(searchInput) < 3:
+        st.text("The search query is too short.")
         return
 
     #intro to the search results
@@ -85,6 +86,7 @@ def doASearch():
 
     #make sure results are not too many before continuing
     if len(linesFound) > 500:
+        st.text("Too many results.")
         return
 
     textToPrint = "\n\n".join(linesFound)
