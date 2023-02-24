@@ -13,7 +13,7 @@ st.set_page_config(
     }
 )
 
-#st.image("https://i.imgur.com/s9abZgP.png", width=60)
+
 st.title("Search FMHY")
 
 
@@ -139,6 +139,7 @@ if(st.button("Search")):
     doASearch()
 
 with st.sidebar:
+    st.image("https://i.imgur.com/s9abZgP.png", width=100)
     st.markdown("[Wiki on Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/)")
     st.markdown("[Wiki as Raw Markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page)")
     st.markdown("[Repository for this search tool](https://github.com/Rust1667/a-FMHY-search-engine)")
