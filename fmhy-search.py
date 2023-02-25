@@ -112,7 +112,7 @@ def doASearch():
 
     #make sure results are not too many before continuing
     if len(linesFound) > 1000:
-        toomanywarningmsg = "Too many results. (" + len(linesFound) + ")"
+        toomanywarningmsg = "Too many results. (" + str(len(linesFound)) + ")"
         st.warning(toomanywarningmsg, icon="⚠️")
         return
 
