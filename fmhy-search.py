@@ -75,7 +75,7 @@ def doASearch():
     searchInput = queryInput
 
     #make sure the input is right before continuing
-    if len(searchInput) < 3:
+    if len(searchInput) < 2:
         st.text("The search query is too short.")
         return
 
@@ -92,7 +92,7 @@ def doASearch():
     sectionTitleList = linesFoundAll[1]
 
     #make sure results are not too many before continuing
-    if len(linesFound) > 500:
+    if len(linesFound) > 1000:
         st.text("Too many results.")
         return
 
