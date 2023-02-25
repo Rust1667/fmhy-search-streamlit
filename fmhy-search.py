@@ -112,7 +112,7 @@ def doASearch():
         st.text("Too many results.")
         return
 
-    if coloring:
+    if coloring and not printRawMarkdown:
         linesFoundColored = colorLinesFound(linesFound, myFilterWords)
         textToPrint = "\n\n".join(linesFoundColored)
     else:
