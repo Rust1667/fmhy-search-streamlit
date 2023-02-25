@@ -25,7 +25,7 @@ with st.sidebar:
 
 queryInput = st.text_input(label=" ", value="")
 
-coloring = st.checkbox('Coloring') #coloring = True
+coloring = st.checkbox('Coloring', help="Many links won't work when this is active.") #coloring = True
 
 ##Config
 printRawMarkdown = False #printRawMarkdown = st.checkbox('Raw')
