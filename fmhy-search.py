@@ -91,8 +91,11 @@ def doASearch():
     searchInput = queryInput
 
     #make sure the input is right before continuing
+    if searchInput == "":
+        st.warning("The search query is empty.", icon="⚠️")
+        return
     if len(searchInput) < 2:
-        st.warning("The search query is too short.")
+        st.warning("The search query is too short.", icon="⚠️")
         return
 
     #intro to the search results
@@ -109,7 +112,7 @@ def doASearch():
 
     #make sure results are not too many before continuing
     if len(linesFound) > 1000:
-        st.warning("Too many results.")
+        st.warning("Too many results.", icon="⚠️")
         return
 
     if coloring and not printRawMarkdown:
