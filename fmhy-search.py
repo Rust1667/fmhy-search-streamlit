@@ -5,7 +5,7 @@ st.set_page_config(
     page_title="FMHY Search",
     page_icon="https://i.imgur.com/s9abZgP.png",
     layout="centered",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="auto",
     menu_items={
         'Get Help': 'https://github.com/Rust1667/fmhy-search-streamlit',
         'Report a bug': "https://github.com/Rust1667/fmhy-search-streamlit",
