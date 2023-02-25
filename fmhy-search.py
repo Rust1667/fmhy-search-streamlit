@@ -25,8 +25,9 @@ with st.sidebar:
 
 queryInput = st.text_input(label=" ", value="")
 
+coloring = st.checkbox('Coloring') #coloring = True
+
 ##Config
-coloring = True
 printRawMarkdown = False #printRawMarkdown = st.checkbox('Raw')
 
 ## Original script code mostly
