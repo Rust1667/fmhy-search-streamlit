@@ -123,7 +123,7 @@ def doASearch():
     if not printRawMarkdown:
         st.markdown(textToPrint)
     else:
-        st.caption(textToPrint)
+        st.text(textToPrint)
 
     #title section results
     if len(sectionTitleList)>0:
