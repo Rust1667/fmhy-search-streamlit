@@ -112,7 +112,8 @@ def doASearch():
 
     #make sure results are not too many before continuing
     if len(linesFound) > 1000:
-        st.warning("Too many results. (" + len(linesFound) + ")", icon="⚠️")
+        toomanywarningmsg = "Too many results. (" + len(linesFound) + ")"
+        st.warning(toomanywarningmsg, icon="⚠️")
         return
 
     if coloring and not printRawMarkdown:
