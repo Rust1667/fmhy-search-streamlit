@@ -122,10 +122,10 @@ def doASearch():
     if not printRawMarkdown:
         st.markdown(textToPrint)
     else:
-        linesFoundColored = colorLinesFound(linesFound, myFilterWords)
-        textToPrint = "\n\n".join(linesFoundColored)
-        textToPrint = textToPrint.replace("("," ").replace(")"," ")
-        st.markdown(textToPrint)
+        #linesFoundColored = colorLinesFound(linesFound, myFilterWords)
+        #textToPrint = "\n\n".join(linesFoundColored)
+        #textToPrint = textToPrint.replace("("," ").replace(")"," ")
+        st.text(textToPrint)
 
     #title section results
     if len(sectionTitleList)>0:
