@@ -25,6 +25,7 @@ with st.sidebar:
 
 queryInput = st.text_input(label=" ", value="")
 
+printRawMarkdown = st.checkbox('Raw')
 
 ##Config
 coloring = True
@@ -118,7 +119,11 @@ def doASearch():
         textToPrint = "\n\n".join(linesFound)
 
     st.text(str(len(linesFound)) + " search results:\n")
-    st.markdown(textToPrint)
+
+    if not printRawMarkdown:
+        st.markdown(textToPrint)
+    else:
+        st.caption(textToPrint)
 
     #title section results
     if len(sectionTitleList)>0:
