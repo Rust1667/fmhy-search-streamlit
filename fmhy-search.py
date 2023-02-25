@@ -26,6 +26,8 @@ with st.sidebar:
 queryInput = st.text_input(label=" ", value="")
 
 
+##Config
+coloring = True
 
 ## Original script code mostly
 import requests
@@ -64,8 +66,7 @@ def filterOutTitleLines(lineList):
 
 
 def colored(word, color):
-    result = ":" + color + "[" + word + "]"
-    return result
+    return ":" + color + "[" + word + "]"
 
 def highlightWord(sentence, word):
     return sentence.replace(word, colored(word,'red'))
@@ -110,9 +111,12 @@ def doASearch():
         st.text("Too many results.")
         return
 
-    linesFoundColored = colorLinesFound(linesFound, myFilterWords)
-    textToPrint = "\n\n".join(linesFoundColored) #textToPrint = "\n\n".join(linesFound)
-    
+    if coloring:
+        linesFoundColored = colorLinesFound(linesFound, myFilterWords)
+        textToPrint = "\n\n".join(linesFoundColored)
+    else:
+        textToPrint = "\n\n".join(linesFound)
+
     st.text(str(len(linesFound)) + " search results:\n")
     st.markdown(textToPrint)
 
