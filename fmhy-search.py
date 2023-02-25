@@ -27,7 +27,7 @@ queryInput = st.text_input(label=" ", value="")
 
 ##Config
 coloring = False #coloring = st.checkbox('Coloring', help="Many links won't work when this is active.")
-printRawMarkdown = False #printRawMarkdown = st.checkbox('Raw')
+printRawMarkdown = st.checkbox('Raw') #printRawMarkdown = False #
 
 ## Original script code mostly
 import requests
@@ -122,7 +122,10 @@ def doASearch():
     if not printRawMarkdown:
         st.markdown(textToPrint)
     else:
-        st.text(textToPrint)
+        linesFoundColored = colorLinesFound(linesFound, myFilterWords)
+        textToPrint = "\n\n".join(linesFoundColored)
+        textToPrint = textToPrint.replace("("," ").replace(")"," ")
+        st.markdown(textToPrint)
 
     #title section results
     if len(sectionTitleList)>0:
