@@ -62,6 +62,28 @@ def filterOutTitleLines(lineList):
             sectionTitleList.append(line)
     return [filteredList, sectionTitleList]
 
+
+def colored(word, color):
+    result = ":" + color + "[" + word + "]"
+    return result
+
+def highlightWord(sentence, word):
+    return sentence.replace(word, colored(word,'red'))
+
+def colorLinesFound(linesFound, filterWords):
+    coloredLinesList = []
+    filterWordsCapitalizedToo=[]
+    for word in filterWords:
+        filterWordsCapitalizedToo.append(word.capitalize())
+    filterWordsCapitalizedToo.extend(filterWords)
+    for line in linesFound:
+        for word in filterWordsCapitalizedToo:
+            line = highlightWord(line, word)
+        coloredLine = line
+        coloredLinesList.append(coloredLine)
+    return coloredLinesList
+
+
 def doASearch():
 
     searchInput = queryInput
@@ -88,7 +110,9 @@ def doASearch():
         st.text("Too many results.")
         return
 
-    textToPrint = "\n\n".join(linesFound)
+    linesFoundColored = colorLinesFound(linesFound, myFilterWords)
+    textToPrint = "\n\n".join(linesFoundColored) #textToPrint = "\n\n".join(linesFound)
+    
     st.text(str(len(linesFound)) + " search results:\n")
     st.markdown(textToPrint)
 
