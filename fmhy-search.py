@@ -38,11 +38,7 @@ def splitSentenceIntoWords(searchInput):
     return searchWords
 
 def getAllLines():
-    print("Downloading wiki from GitHub...")
-    with st.spinner('Downloading wiki from GitHub...'):
-        response1 = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page")
-    print("Loaded.\n")
-
+    response1 = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page")
     data = response1.text
     lines = data.split('\n')
     return lines
