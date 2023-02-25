@@ -1,4 +1,4 @@
-## Streamlit
+## Streamlit code
 import streamlit as st
 
 st.set_page_config(
@@ -26,9 +26,9 @@ with st.sidebar:
 queryInput = st.text_input(label=" ", value="")
 
 
-## Original script
-import requests
 
+## Original script code mostly
+import requests
 
 def splitSentenceIntoWords(searchInput):
     searchInput = searchInput.lower()
@@ -61,14 +61,6 @@ def filterOutTitleLines(lineList):
         else:
             sectionTitleList.append(line)
     return [filteredList, sectionTitleList]
-
-
-
-
-lineList = getAllLines()
-
-
-
 
 def doASearch():
 
@@ -106,7 +98,11 @@ def doASearch():
         st.text("\n".join(sectionTitleList))
 
 
-## Streamlit
+## Execute at start of script
+lineList = getAllLines()
+
+
+## Streamlit code
 if(st.button("Search")):
     queryInput = queryInput.title()
     doASearch()
