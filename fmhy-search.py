@@ -25,10 +25,9 @@ with st.sidebar:
 
 queryInput = st.text_input(label=" ", value="")
 
-printRawMarkdown = st.checkbox('Raw')
-
 ##Config
 coloring = True
+printRawMarkdown = False #printRawMarkdown = st.checkbox('Raw')
 
 ## Original script code mostly
 import requests
