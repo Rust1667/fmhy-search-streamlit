@@ -147,5 +147,5 @@ lineList = getAllLines()
 
 
 ## Streamlit code
-if st.button("Search", help="Search for links in the Wiki."):
+if st.button("Search"):
     doASearch(queryInput)
