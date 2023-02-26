@@ -64,6 +64,8 @@ def filterOutTitleLines(lineList):
             sectionTitleList.append(line)
     return [filteredList, sectionTitleList]
 
+def removeHashtags(string):
+    return string.replace("#", "")
 
 def colored(word, color):
     return ":" + color + "[" + word + "]"
@@ -139,7 +141,8 @@ def doASearch(searchInput):
     #title section results
     if len(sectionTitleList)>0:
         st.text("Also there are these section titles: ")
-        st.caption("\n".join(sectionTitleList))
+        sectionTitleListToPrint = removeHashtags( "\n".join(sectionTitleList) )
+        st.markdown(sectionTitleListToPrint)
 
 
 ## Execute at start of script
