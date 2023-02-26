@@ -118,8 +118,13 @@ def doASearch():
     else:
         textToPrint = "\n\n".join(linesFound)
 
-    st.text(str(len(linesFound)) + " search results:\n")
+    #print search results count
+    if len(linesFound)>0:
+        st.text(str(len(linesFound)) + " search results:\n")
+    else
+        st.markdown("No results found! Try a different query or try a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools) if looking for specific media.")
 
+    # print search results
     if not printRawMarkdown:
         st.markdown(textToPrint)
     else:
@@ -133,6 +138,8 @@ def doASearch():
         st.text("Also there are these section titles: ")
         st.text("\n".join(sectionTitleList))
 
+    #CSE suggestion
+    if 
 
 ## Execute at start of script
 lineList = getAllLines()
