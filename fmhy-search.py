@@ -210,6 +210,6 @@ if st.button("Search"):
     doASearch(queryInput)
 
     try:
-        logToGoogleSheet(queryInput, credentialsDictEnv)
+        logToGoogleSheet(queryInput, st.secrets.credentialsDict)
     except Exception as e: print(e)
 
