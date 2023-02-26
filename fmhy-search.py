@@ -148,5 +148,4 @@ lineList = getAllLines()
 
 ## Streamlit code
 if(st.button("Search")):
-    queryInput = queryInput.title()
-    doASearch(queryInput)
+    doASearch( searchInput = queryInput.title() )
