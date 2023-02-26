@@ -7,8 +7,8 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="collapsed",
     menu_items={
-        'Get Help': 'https://github.com/Rust1667/fmhy-search-streamlit',
-        'Report a bug': "https://github.com/Rust1667/fmhy-search-streamlit",
+        'Get Help': 'https://github.com/Rust1667/a-FMHY-search-engine',
+        'Report a bug': "https://github.com/Rust1667/a-FMHY-search-engine",
         'About': "https://github.com/Rust1667/a-FMHY-search-engine"
     }
 )
@@ -19,7 +19,7 @@ with st.sidebar:
     st.image("https://i.imgur.com/s9abZgP.png", width=100)
     st.markdown("[Wiki on Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/)")
     st.markdown("[Wiki as Raw Markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page)")
-    st.markdown("[Github Repository for this tool (web-app)](https://github.com/Rust1667/fmhy-search-streamlit)")
+    #st.markdown("[Github Repository for this tool (web-app)](https://github.com/Rust1667/fmhy-search-streamlit)")
     st.markdown("[Github Repository for this tool (script version)](https://github.com/Rust1667/a-FMHY-search-engine)")
     st.markdown("[Other Search Tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
 
