@@ -138,8 +138,6 @@ def doASearch():
         st.text("Also there are these section titles: ")
         st.text("\n".join(sectionTitleList))
 
-    #CSE suggestion
-    if 
 
 ## Execute at start of script
 lineList = getAllLines()
