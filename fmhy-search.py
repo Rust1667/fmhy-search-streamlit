@@ -107,7 +107,7 @@ def doASearch():
     sectionTitleList = linesFoundAll[1]
 
     #make sure results are not too many before continuing
-    if len(linesFound) > 1000:
+    if len(linesFound) > 700 and not searchInput=="⭐":
         toomanywarningmsg = "Too many results. (" + str(len(linesFound)) + ")"
         st.warning(toomanywarningmsg, icon="⚠️")
         return
