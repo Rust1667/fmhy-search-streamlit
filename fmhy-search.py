@@ -144,7 +144,7 @@ def doASearch(searchInput):
         st.text(str(len(linesFound)) + " search results:\n")
     else:
         st.markdown("No results found!")
-        st.markdown("If looking for specific media, try with a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools).")
+        st.markdown("If looking for specific media, try with a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools). For Live Sports go [here](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video/#wiki_.25B7_live_tv_.2F_sports).")
 
     # print search results
     if not printRawMarkdown:
