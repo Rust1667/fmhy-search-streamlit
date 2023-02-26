@@ -59,13 +59,18 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 import json
 
-def logToGoogleSheet(stringToLog, credentials):
+@st.cache_resource
+def getAuthorizedGoogleSheet(credentials):
     scopes = [
     'https://www.googleapis.com/auth/spreadsheets',
     'https://www.googleapis.com/auth/drive'
     ]
     file = gspread.service_account_from_dict(credentials) # authenticate the JSON key with gspread
     sheet = file.open("logger") #open sheet
+    return sheet
+
+def logToGoogleSheet(stringToLog, credentials):
+    sheet = getAuthorizedGoogleSheet(credentials)
     sheet = sheet.sheet1 #replace sheet_name with the name that corresponds to yours, e.g, it can be sheet1
     sheet.append_row([getDateTimeString(), stringToLog], table_range="A1:B1")
 
