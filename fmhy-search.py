@@ -47,6 +47,24 @@ def getAllLines():
     lines = data.split('\n')
     return lines
 
+
+from oauth2client.service_account import ServiceAccountCredentials
+import gspread
+import json
+
+def logToGoogleSheet(stringToLog, credentials):
+    scopes = [
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/drive'
+    ]
+    credentials = CREDENTIALS_DICT #ServiceAccountCredentials.from_json_keyfile_name("proyecto1-379019-4aa9766b7abc.json", scopes) #access the json key you downloaded earlier 
+    file = gspread.service_account_from_dict(credentials) # authenticate the JSON key with gspread
+    sheet = file.open("logger") #open sheet
+    sheet = sheet.sheet1 #replace sheet_name with the name that corresponds to yours, e.g, it can be sheet1
+    sheet.append_row([stringToLog], table_range="A1:A1")
+
+
+
 def filterLines(lineList, filterWords):
     sentences = lineList
     words = filterWords
@@ -154,3 +172,8 @@ lineList = getAllLines()
 ## Streamlit code
 if st.button("Search"):
     doASearch(queryInput)
+
+    try:
+        logToGoogleSheet(queryInput, st.secrets["CREDENTIALS_DICT"])
+    except Exception as e: print(e)
+
