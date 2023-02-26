@@ -146,12 +146,17 @@ def doASearch(searchInput):
     else:
         textToPrint = "\n\n".join(linesFound)
 
+    #check for porn words
+    pornWords = ['nsfw', 'porn', 'onlyfans']
+    thereArePornWords = any(word in pornWords for word in myFilterWords)
+
     #print search results count
     if len(linesFound)>0:
         st.text(str(len(linesFound)) + " search results:\n")
     else:
         st.markdown("No results found!")
-        st.markdown("If looking for specific media, try with a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools). For Live Sports go [here](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video/#wiki_.25B7_live_tv_.2F_sports).")
+        if not thereArePornWords:
+            st.markdown("If looking for specific media, try with a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools). For Live Sports go [here](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video/#wiki_.25B7_live_tv_.2F_sports).")
 
     # print search results
     if not printRawMarkdown:
@@ -170,6 +175,11 @@ def doASearch(searchInput):
         sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
         st.markdown(sectionTitleListToPrint)
         st.markdown("\n\nFind them in the [Wiki](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/).")
+
+    #full nsfw section in case people look for it
+    if thereArePornWords:
+        st.markdown("The full NSFW Wiki Section is [here](https://saidit.net/s/freemediafuckyeah/wiki/index).")
+
 
 
 ## Execute at start of script
