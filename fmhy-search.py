@@ -140,6 +140,7 @@ def doASearch(searchInput):
 
     #title section results
     if len(sectionTitleList)>0:
+        st.text("\n\n\n")
         st.text("Also there are these section titles: ")
         sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
         st.markdown(sectionTitleListToPrint)
