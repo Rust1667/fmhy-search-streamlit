@@ -85,9 +85,7 @@ def colorLinesFound(linesFound, filterWords):
     return coloredLinesList
 
 
-def doASearch():
-
-    searchInput = queryInput
+def doASearch(searchInput):
 
     #make sure the input is right before continuing
     if searchInput=="":
@@ -151,4 +149,4 @@ lineList = getAllLines()
 ## Streamlit code
 if(st.button("Search")):
     queryInput = queryInput.title()
-    doASearch()
+    doASearch(queryInput)
