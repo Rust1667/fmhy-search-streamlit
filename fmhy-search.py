@@ -48,6 +48,13 @@ def getAllLines():
     return lines
 
 
+import datetime
+def getDateTimeString():
+    now = datetime.datetime.now()
+    dateTimeString = now.strftime("%Y/%m/%d-%H:%M:%S")
+    return dateTimeString
+
+
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 import json
@@ -60,7 +67,7 @@ def logToGoogleSheet(stringToLog, credentials):
     file = gspread.service_account_from_dict(credentials) # authenticate the JSON key with gspread
     sheet = file.open("logger") #open sheet
     sheet = sheet.sheet1 #replace sheet_name with the name that corresponds to yours, e.g, it can be sheet1
-    sheet.append_row([stringToLog], table_range="A1:A1")
+    sheet.append_row([getDateTimeString(), stringToLog], table_range="A1:B1")
 
 
 
