@@ -29,8 +29,8 @@ queryInput = st.text_input(label=" ", value="")
 coloring = False 
 #coloring = st.checkbox('Coloring', help="Many links won't work when this is active.")
 
-#printRawMarkdown = False 
-printRawMarkdown = st.checkbox('Raw')
+printRawMarkdown = False 
+#printRawMarkdown = st.checkbox('Raw')
 
 ## Original script code mostly
 import requests
