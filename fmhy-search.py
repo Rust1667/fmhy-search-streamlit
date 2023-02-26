@@ -23,7 +23,7 @@ with st.sidebar:
     st.markdown("[Github Repository for this tool (script version)](https://github.com/Rust1667/a-FMHY-search-engine)")
     st.markdown("[Other Search Tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
 
-queryInput = st.text_input(label=" ", value="")
+queryInput = st.text_input(label=" ", value="", help="Search for links in the Wiki.")
 
 ##Config
 coloring = False 
@@ -147,5 +147,5 @@ lineList = getAllLines()
 
 
 ## Streamlit code
-if(st.button("Search")):
+if st.button("Search", help="Search for links in the Wiki."):
     doASearch(queryInput)
