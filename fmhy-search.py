@@ -163,6 +163,7 @@ def doASearch(searchInput):
         st.text("Also there are these section titles: ")
         sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
         st.markdown(sectionTitleListToPrint)
+        st.markdown("\n\nFind them in the [Wiki](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/).")
 
 
 ## Execute at start of script
