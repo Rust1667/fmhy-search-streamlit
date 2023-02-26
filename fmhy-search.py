@@ -90,7 +90,7 @@ def doASearch():
     if searchInput=="":
         st.warning("The search query is empty.", icon="⚠️")
         return
-    if len(searchInput)<3 and not searchInput=="⭐":
+    if len(searchInput)<2 and not searchInput=="⭐":
         st.warning("The search query is too short.", icon="⚠️")
         return
 
