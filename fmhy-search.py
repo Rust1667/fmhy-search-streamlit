@@ -40,7 +40,7 @@ def splitSentenceIntoWords(searchInput):
     searchWords = searchInput.split(' ')
     return searchWords
 
-@st.cache_resource(ttl=datetime.timedelta(hours=24))
+@st.cache_resource(ttl=86400)
 def getAllLines():
     response1 = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page")
     data = response1.text
