@@ -139,7 +139,7 @@ def doASearch(searchInput):
     #title section results
     if len(sectionTitleList)>0:
         st.text("Also there are these section titles: ")
-        st.text("\n".join(sectionTitleList))
+        st.markdown("\n".join(sectionTitleList))
 
 
 ## Execute at start of script
