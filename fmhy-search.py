@@ -23,7 +23,6 @@ with st.sidebar:
     st.markdown("[Github Repository for this tool (script version)](https://github.com/Rust1667/a-FMHY-search-engine)")
     st.markdown("[Other Search Tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
 
-queryInput = st.text_input(label=" ", value="", help="Search for links in the Wiki.")
 
 ##Config
 coloring = False 
@@ -217,9 +216,18 @@ def doASearch(searchInput):
 ## Execute at start of script
 lineList = getAllLines()
 
+def searchInputCallback():
+    queryInput = st.session_state.text_input_key
+    doASearch(queryInput)
+    try:
+        logToGoogleSheet(queryInput)
+    except:
+        print("Google sheet error.")
 
 
 ## Streamlit code
+queryInput = st.text_input(label=" ", value="", help="Search for links in the Wiki.", on_change=searchInputCallback, key='text_input_key')
+
 if st.button("Search"):
     doASearch(queryInput)
 
@@ -227,5 +235,4 @@ if st.button("Search"):
         logToGoogleSheet(queryInput)
     except:
         print("Google sheet error.")
-        #st.cache_resource.clear()
 
