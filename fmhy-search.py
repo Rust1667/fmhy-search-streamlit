@@ -166,12 +166,11 @@ def doASearch(searchInput):
 
         #Print the section titles
         if len(sectionTitleList)>0:
-            with st.container():
-                st.markdown("There are these section titles in the Wiki: ")
-                sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
-                st.markdown(sectionTitleListToPrint)
-                st.markdown(" ")
-                st.markdown("Find them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
+            st.markdown("There are these section titles in the Wiki: ")
+            #sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
+            st.code(sectionTitleListToPrint, language="markdown")
+            #st.markdown(" ")
+            st.markdown("Find them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
 
         return
 
@@ -202,12 +201,11 @@ def doASearch(searchInput):
 
     #title section results
     if len(sectionTitleList)>0:
-        with st.container():
-            st.markdown("Also there are these section titles in the Wiki: ")
-            sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
-            st.markdown(sectionTitleListToPrint)
-            st.markdown(" ")
-            st.markdown("Find them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
+        st.markdown("Also there are these section titles in the Wiki: ")
+        #sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
+        st.code(sectionTitleListToPrint, language="markdown")
+        #st.markdown(" ")
+        st.markdown("Find them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
 
     #full nsfw section in case people look for it
     if thereArePornWords:
