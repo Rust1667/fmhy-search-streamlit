@@ -208,7 +208,7 @@ def doASearch(searchInput):
 
     #full nsfw section in case people look for it
     if thereArePornWords:
-        st.markdown("The full NSFW Wiki Section is [here](https://saidit.net/s/freemediafuckyeah/wiki/index).")
+        st.info("The full NSFW Wiki Section is [here](https://saidit.net/s/freemediafuckyeah/wiki/index).", icon="ℹ️")
 
 
 
