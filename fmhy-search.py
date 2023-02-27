@@ -181,7 +181,7 @@ def doASearch(searchInput):
         textToPrint = "\n\n".join(linesFound)
 
     #check for porn words
-    pornWords = ['nsfw', 'porn', 'onlyfans']
+    pornWords = ['nsfw', 'porn', 'onlyfans', 'xxx', 'hentai', 'sex']
     thereArePornWords = any(word in pornWords for word in myFilterWords)
 
     #print search results count
