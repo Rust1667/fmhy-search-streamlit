@@ -17,6 +17,8 @@ st.title("Search FMHY")
 
 with st.sidebar:
     st.image("https://i.imgur.com/s9abZgP.png", width=100)
+    st.text("Search Engine for r/FREEMEDIAHECKYEAH")
+    st.markdown("Links:")
     st.markdown("[Wiki on Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/)")
     st.markdown("[Wiki as Raw Markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page)")
     #st.markdown("[Github Repository for this tool (web-app)](https://github.com/Rust1667/fmhy-search-streamlit)")
