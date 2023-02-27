@@ -188,7 +188,7 @@ def doASearch(searchInput):
     if len(linesFound)>0:
         st.text(str(len(linesFound)) + " search results:\n")
     else:
-        st.markdown("No results found!")
+        st.info("No results found! ¯\_(ツ)_/¯")
         if not thereArePornWords:
             st.info("If looking for specific media or software, try with a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools). For Live Sports go [here](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video/#wiki_.25B7_live_tv_.2F_sports).", icon="ℹ️")
 
