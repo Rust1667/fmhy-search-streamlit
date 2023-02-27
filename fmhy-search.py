@@ -163,8 +163,18 @@ def doASearch(searchInput):
     if len(linesFound) > 700 and not searchInput=="⭐":
         toomanywarningmsg = "Too many results. (" + str(len(linesFound)) + ")"
         st.warning(toomanywarningmsg, icon="⚠️")
+
+        #Print the section titles
+        if len(sectionTitleList)>0:
+            st.text("\n\n\n")
+            st.text("There are these section titles: ")
+            sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
+            st.markdown(sectionTitleListToPrint)
+            st.markdown("\n\nFind them in the [Wiki](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/).")
+
         return
 
+    #create string of text to print
     if coloring and not printRawMarkdown:
         linesFoundColored = colorLinesFound(linesFound, myFilterWords)
         textToPrint = "\n\n".join(linesFoundColored)
@@ -187,10 +197,6 @@ def doASearch(searchInput):
     if not printRawMarkdown:
         st.markdown(textToPrint)
     else:
-        #linesFoundColored = colorLinesFound(linesFound, myFilterWords)
-        #textToPrint = "\n\n".join(linesFoundColored)
-        #textToPrint = textToPrint.replace("("," ").replace(")"," ")
-        #st.text(textToPrint)
         st.code(textToPrint, language="markdown")
 
     #title section results
