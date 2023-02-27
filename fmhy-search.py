@@ -167,10 +167,10 @@ def doASearch(searchInput):
         #Print the section titles
         if len(sectionTitleList)>0:
             st.text("\n\n\n")
-            st.text("There are these section titles: ")
+            st.text("There are these section titles in the Wiki: ")
             sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
             st.markdown(sectionTitleListToPrint)
-            st.markdown("\n\nFind them in the [Wiki](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/).")
+            st.markdown("\n\nFind them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
 
         return
 
@@ -202,10 +202,10 @@ def doASearch(searchInput):
     #title section results
     if len(sectionTitleList)>0:
         st.text("\n\n\n")
-        st.text("Also there are these section titles: ")
+        st.text("Also there are these section titles in the Wiki: ")
         sectionTitleListToPrint = removeHashtags( "\n\n".join(sectionTitleList) )
         st.markdown(sectionTitleListToPrint)
-        st.markdown("\n\nFind them in the [Wiki](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/).")
+        st.markdown("\n\nFind them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
 
     #full nsfw section in case people look for it
     if thereArePornWords:
