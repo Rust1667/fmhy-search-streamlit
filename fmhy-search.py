@@ -226,7 +226,7 @@ def searchInputCallback():
 
 
 ## Streamlit code
-queryInput = st.text_input(label=" ", value="", help="Search for links in the Wiki.", on_change=searchInputCallback, key='text_input_key')
+queryInput = st.text_input(label=" ", value="", help="Search for links in the Wiki.")
 
 if st.button("Search"):
     doASearch(queryInput)
