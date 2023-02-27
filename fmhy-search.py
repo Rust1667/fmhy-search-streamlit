@@ -220,5 +220,8 @@ lineList = getAllLines()
 ## Streamlit code
 if st.button("Search"):
     doASearch(queryInput)
-    logToGoogleSheet(queryInput)
+    try:
+        logToGoogleSheet(queryInput)
+    except:
+        print("There was an error with the google sheet.")
 
