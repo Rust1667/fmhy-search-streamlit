@@ -65,7 +65,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 import json
 
-@st.cache_resource
+@st.cache_resource(ttl=14400)
 def getAuthorizedGoogleSheet():
     credentials = {
       "type": st.secrets.type,
