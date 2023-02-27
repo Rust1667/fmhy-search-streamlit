@@ -65,20 +65,34 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 import json
 
+credentials = {
+  "type": st.secrets.type,
+  "project_id": st.secrets.project_id,
+  "private_key_id": st.secrets.private_key_id,
+  "private_key": st.secrets.private_key,
+  "client_email": st.secrets.client_email,
+  "client_id": st.secrets.client_id,
+  "auth_uri": st.secrets.auth_uri,
+  "token_uri": st.secrets.token_uri,
+  "auth_provider_x509_cert_url": st.secrets.auth_provider_x509_cert_url,
+  "client_x509_cert_url": st.secrets.client_x509_cert_url
+}
+
 @st.cache_resource
-def getAuthorizedGoogleSheet(credentials):
+def getAuthorizedGoogleSheet():
     scopes = [
     'https://www.googleapis.com/auth/spreadsheets',
     'https://www.googleapis.com/auth/drive'
     ]
-    file = gspread.service_account_from_dict(credentials) # authenticate the JSON key with gspread
-    sheet = file.open("logger") #open sheet
+    file = gspread.service_account_from_dict(credentials)
+    sheet = file.open("logger")
     return sheet
 
-def logToGoogleSheet(stringToLog, credentials):
-    sheet = getAuthorizedGoogleSheet(credentials)
-    sheet = sheet.sheet1 #replace sheet_name with the name that corresponds to yours, e.g, it can be sheet1
-    sheet.append_row([getDateTimeString(), stringToLog], table_range="A1:B1")
+def logToGoogleSheet(stringToLog):
+    sheet = getAuthorizedGoogleSheet()
+    sheet = sheet.sheet1 #sheet inside the g-sheets document
+    dataToAppend = [getDateTimeString(), stringToLog]
+    sheet.append_row(dataToAppend, table_range="A1:B1")
 
 
 
@@ -197,25 +211,9 @@ def doASearch(searchInput):
 lineList = getAllLines()
 
 
-credentialsDictEnv = {
-  "type": st.secrets.type,
-  "project_id": st.secrets.project_id,
-  "private_key_id": st.secrets.private_key_id,
-  "private_key": st.secrets.private_key,
-  "client_email": st.secrets.client_email,
-  "client_id": st.secrets.client_id,
-  "auth_uri": st.secrets.auth_uri,
-  "token_uri": st.secrets.token_uri,
-  "auth_provider_x509_cert_url": st.secrets.auth_provider_x509_cert_url,
-  "client_x509_cert_url": st.secrets.client_x509_cert_url
-}
-
 
 ## Streamlit code
 if st.button("Search"):
     doASearch(queryInput)
-
-    try:
-        logToGoogleSheet(queryInput, credentialsDictEnv)
-    except Exception as e: print(e)
+    logToGoogleSheet(queryInput)
 
