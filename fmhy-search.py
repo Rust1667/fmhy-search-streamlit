@@ -42,8 +42,14 @@ def splitSentenceIntoWords(searchInput):
 
 @st.cache_resource(ttl=86400)
 def getAllLines():
-    response1 = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page")
-    data = response1.text
+    try:
+        #First, try to get it from Github
+        response1 = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page")
+        data = response1.text
+    except:
+        #If that fails, get it from the local backup
+        with open('single-page', 'r') as f:
+            data = f.read()
     lines = data.split('\n')
     return lines
 
