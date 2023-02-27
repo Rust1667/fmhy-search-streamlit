@@ -65,7 +65,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 import json
 
-@st.cache_resource(ttl=14400)
+@st.cache_resource(ttl=86400)
 def getAuthorizedGoogleSheet():
     credentials = {
       "type": st.secrets.type,
@@ -165,6 +165,7 @@ def doASearch(searchInput):
 
         #Print the section titles
         if len(sectionTitleList)>0:
+            st.markdown(" ")
             st.markdown("There are these section titles in the Wiki: ")
             sectionTitleListToPrint = "\n\n".join(sectionTitleList)
             st.code(sectionTitleListToPrint, language="markdown")
@@ -200,6 +201,7 @@ def doASearch(searchInput):
 
     #title section results
     if len(sectionTitleList)>0:
+        st.markdown(" ")
         st.markdown("Also there are these section titles in the Wiki: ")
         sectionTitleListToPrint = "\n\n".join(sectionTitleList)
         st.code(sectionTitleListToPrint, language="markdown")
@@ -220,8 +222,10 @@ lineList = getAllLines()
 ## Streamlit code
 if st.button("Search"):
     doASearch(queryInput)
+
     try:
         logToGoogleSheet(queryInput)
     except:
-        print("There was an error with the google sheet.")
+        print("Google sheet error.")
+        #st.cache_resource.clear()
 
