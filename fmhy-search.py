@@ -111,9 +111,8 @@ def checkList1isInList2(list1, list2):
             return False
     return True
 
-import re
 def checkWordForWordMatch(line, searchQuery):
-    lineWords = re.split(' [|]|[|] |]\(| ', line.lower())
+    lineWords = line.lower().replace('[', ' ').replace(']', ' ').split(' ')
     searchQueryWords = searchQuery.lower().split(' ')
     return checkList1isInList2(searchQueryWords, lineWords)
 
