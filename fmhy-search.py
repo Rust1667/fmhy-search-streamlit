@@ -210,6 +210,9 @@ def doASearch(searchInput):
     pornWords = ['nsfw', 'porn', 'onlyfans', 'xxx', 'hentai', 'sex']
     thereArePornWords = any(word in pornWords for word in myFilterWords)
 
+    if searchInput=='porn':
+        st.info("The full NSFW Wiki Section is [here](https://saidit.net/s/freemediafuckyeah/wiki/index).", icon="ℹ️")
+
     #print search results count
     if len(linesFound)>0:
         st.text(str(len(linesFound)) + " search results:\n")
