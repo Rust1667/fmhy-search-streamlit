@@ -36,9 +36,6 @@ printRawMarkdown = False
 ## Original script code mostly
 import requests
 
-def splitSentenceIntoWords(searchInput):
-    return searchInput.lower().split(' ')
-
 @st.cache_resource(ttl=86400)
 def getAllLines():
     try:
@@ -123,7 +120,7 @@ def moveBetterMatchesToFront(myList, searchQuery):
     return myList
 
 def filterLines(lineList, searchQuery):
-    filterWords = splitSentenceIntoWords(searchQuery)
+    filterWords = searchQuery.lower().split(' ')
     lineListFiltered = [sentence for sentence in lineList if all(
         w.lower() in sentence.lower() for w in filterWords
     )]
@@ -173,14 +170,14 @@ def doASearch(searchInput):
         return
 
     #intro to the search results
-    myFilterWords = splitSentenceIntoWords(searchInput)
+    myFilterWords = searchInput.lower().split(' ')
 
     print("searching: " + searchInput)
 
     #main results
     myLineList = lineList
     linesFoundPrev = filterLines(myLineList, searchInput)
-    linesFoundPrev = moveExactMatchesToFront(linesFoundPrev, searchInput)
+    #linesFoundPrev = moveExactMatchesToFront(linesFoundPrev, searchInput)
     linesFoundPrev = moveBetterMatchesToFront(linesFoundPrev, searchInput)
     linesFoundAll = filterOutTitleLines(linesFoundPrev)
     linesFound = linesFoundAll[0]
