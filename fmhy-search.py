@@ -259,7 +259,8 @@ def searchInputCallback():
 queryInput = st.text_input(label=" ", value="", help="Search for links in the Wiki.")
 
 if st.button("Search"):
-    doASearch(queryInput)
+    with st.spinner('searching...'):
+        doASearch(queryInput)
 
     try:
         logToGoogleSheet(queryInput)
