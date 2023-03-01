@@ -102,7 +102,7 @@ def checkQueryContainedExactlyInLine(line, searchQuery):
     return (searchQuery in line)
 
 def moveExactMatchesToFront(myList, searchQuery):
-    for i in range(len(myList)):
+    for i in reversed(range(len(myList))):
         if checkQueryContainedExactlyInLine(myList[i], searchQuery):
             myList.insert(0, myList.pop(i))
     return myList
@@ -119,7 +119,7 @@ def checkWordForWordMatch(line, searchQuery):
     return checkElements(searchQueryWords, lineSplitInWords)
 
 def moveBetterMatchesToFront(myList, searchQuery):
-    for i in range(len(myList)):
+    for i in reversed(range(len(myList))):
         if checkWordForWordMatch(myList[i], searchQuery):
             myList.insert(0, myList.pop(i))
     return myList
@@ -182,8 +182,8 @@ def doASearch(searchInput):
     #main results
     myLineList = lineList
     linesFoundPrev = filterLines(myLineList, searchInput)
-    linesFoundPrev = moveBetterMatchesToFront(linesFoundPrev, searchInput)
     linesFoundPrev = moveExactMatchesToFront(linesFoundPrev, searchInput)
+    linesFoundPrev = moveBetterMatchesToFront(linesFoundPrev, searchInput)
     linesFoundAll = filterOutTitleLines(linesFoundPrev)
     linesFound = linesFoundAll[0]
     sectionTitleList = linesFoundAll[1]
