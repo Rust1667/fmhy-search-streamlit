@@ -172,6 +172,7 @@ def doASearch(searchInput):
     myLineList = lineList
     linesFoundPrev = filterLines(myLineList, searchInput)
     linesFoundPrev = moveBetterMatchesToFront(linesFoundPrev, searchInput)
+    linesFoundAll = filterOutTitleLines(linesFoundPrev)
     linesFound = linesFoundAll[0]
     sectionTitleList = linesFoundAll[1]
 
