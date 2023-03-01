@@ -96,13 +96,29 @@ def logToGoogleSheet(stringToLog):
 
 
 
-def filterLines(lineList, filterWords):
-    sentences = lineList
-    words = filterWords
-    sentence = [sentence for sentence in sentences if all(
-        w.lower() in sentence.lower() for w in words
+def checkElements(list1, list2):
+    for element in list1:
+        if element not in list2:
+            return False
+    return True
+
+def checkWordForWordMatch(line, searchQuery):
+    lineSplitInWords = splitSentenceIntoWords(line)
+    searchQueryWords = splitSentenceIntoWords(searchQuery)
+    return checkElements(searchQueryWords, lineSplitInWords)
+
+def moveBetterMatchesToFront(myList, searchQuery):
+    for i in range(len(myList)):
+        if checkWordForWordMatch(myList[i], searchQuery):
+            myList.insert(0, myList.pop(i))
+    return myList
+
+def filterLines(lineList, searchQuery):
+    filterWords = splitSentenceIntoWords(searchQuery)
+    lineListFiltered = [sentence for sentence in lineList if all(
+        w.lower() in sentence.lower() for w in filterWords
     )]
-    return sentence
+    return lineListFiltered
 
 def filterOutTitleLines(lineList):
     filteredList = []
@@ -154,8 +170,8 @@ def doASearch(searchInput):
 
     #main results
     myLineList = lineList
-    linesFoundPrev = filterLines(lineList=myLineList, filterWords=myFilterWords)
-    linesFoundAll = filterOutTitleLines(linesFoundPrev)
+    linesFoundPrev = filterLines(myLineList, searchInput)
+    linesFoundPrev = moveBetterMatchesToFront(linesFoundPrev, searchInput)
     linesFound = linesFoundAll[0]
     sectionTitleList = linesFoundAll[1]
 
