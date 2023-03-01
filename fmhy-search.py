@@ -134,14 +134,15 @@ def getOnlyFullWordMatches(myList, searchQuery):
             bumped.append(myList[i])
     return bumped
 
+def getLinesThatContainAllWords(lineList, filterWords):
+    lineListFiltered = [line for line in lineList if all(
+        word.lower() in line.lower() for word in filterWords
+    )]
+    return lineListFiltered
+
 def filterLines(lineList, searchQuery):
     filterWords = searchQuery.lower().split(' ')
-
-    #Get only the lines that contain all the filter words
-    lineListFiltered = [sentence for sentence in lineList if all(
-        w.lower() in sentence.lower() for w in filterWords
-    )]
-
+    lineListFiltered = getLinesThatContainAllWords(lineList, filterWords)
     return lineListFiltered
 
 def filterOutTitleLines(lineList):
