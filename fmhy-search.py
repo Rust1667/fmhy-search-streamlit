@@ -142,9 +142,6 @@ def filterLines(lineList, searchQuery):
         w.lower() in sentence.lower() for w in filterWords
     )]
 
-    if len(lineListFiltered)>200:
-        lineListFiltered = getOnlyFullWordMatches(lineListFiltered, searchQuery)
-
     return lineListFiltered
 
 def filterOutTitleLines(lineList):
@@ -190,16 +187,21 @@ def doASearch(searchInput):
         st.warning("The search query is too short.", icon="⚠️")
         return
 
-    #intro to the search results
-    myFilterWords = searchInput.lower().split(' ')
-
-    print("searching: " + searchInput)
-
     #main results
     myLineList = lineList
     linesFoundPrev = filterLines(myLineList, searchInput)
+
+    #show only full word matches if there are too many results
+    if len(linesFoundPrev) > 200:
+        linesFoundPrev = getOnlyFullWordMatches(linesFoundPrev, searchInput)
+        toomanywarningmsg = "Too many results. (" + str(len(linesFound)) + "). " + "Showing only full-word matches."
+        st.warning(toomanywarningmsg, icon="⚠️")
+
+    #rank results
     linesFoundPrev = moveExactMatchesToFront(linesFoundPrev, searchInput)
     linesFoundPrev = moveBetterMatchesToFront(linesFoundPrev, searchInput)
+
+    #extract titles lines
     linesFoundAll = filterOutTitleLines(linesFoundPrev)
     linesFound = linesFoundAll[0]
     sectionTitleList = linesFoundAll[1]
@@ -219,6 +221,8 @@ def doASearch(searchInput):
             st.markdown("Find them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
 
         return
+
+    myFilterWords = searchInput.lower().split(' ')
 
     #create string of text to print
     if coloring and not printRawMarkdown:
@@ -281,6 +285,8 @@ queryInput = st.text_input(label=" ", value="", help="Search for links in the Wi
 if st.button("Search"):
     doASearch(queryInput)
 
+    #logging
+    print("searching: " + queryInput)
     try:
         logToGoogleSheet(queryInput)
     except:
