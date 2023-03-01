@@ -193,9 +193,9 @@ def doASearch(searchInput):
 
     #show only full word matches if there are too many results
     if len(linesFoundPrev) > 200:
-        linesFoundPrev = getOnlyFullWordMatches(linesFoundPrev, searchInput)
         toomanywarningmsg = "Too many results. (" + str(len(linesFoundPrev)) + "). " + "Showing only full-word matches."
         st.warning(toomanywarningmsg, icon="⚠️")
+        linesFoundPrev = getOnlyFullWordMatches(linesFoundPrev, searchInput)
 
     #rank results
     linesFoundPrev = moveExactMatchesToFront(linesFoundPrev, searchInput)
