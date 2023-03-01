@@ -142,7 +142,7 @@ def filterLines(lineList, searchQuery):
         w.lower() in sentence.lower() for w in filterWords
     )]
 
-    if len(lineListFiltered)>200 and len(lineListFiltered)<700:
+    if len(lineListFiltered)>200:
         lineListFiltered = getOnlyFullWordMatches(lineListFiltered, searchQuery)
 
     return lineListFiltered
