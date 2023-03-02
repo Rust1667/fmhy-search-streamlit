@@ -25,6 +25,8 @@ with st.sidebar:
     st.markdown("[Github Repository for this tool (script version)](https://github.com/Rust1667/a-FMHY-search-engine)")
     st.markdown("[Other Search Tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
 
+queryInput = st.text_input(label=" ", value="", help="Search for links in the Wiki.")
+
 
 ##Config
 coloring = False 
@@ -51,7 +53,10 @@ def dlWikiChunk(fileName, icon, subURL):
     print("Downloaded")
 
     #add a pretext
-    preText = "[" + icon + "](" + "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/" + subURL + ") "
+    if not fileName=="NSFWPiracy.md":
+        preText = "[" + icon + "](" + "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/" + subURL + ") "
+    else:
+        preText = "[" + icon + "](" + subURL + ") "
     lines = addPretext(lines, preText)
     
     return lines
@@ -62,21 +67,21 @@ def alternativeWikiIndexing():
         dlWikiChunk("AdblockVPNGuide.md", "📛", "adblock-vpn-privacy"),
         dlWikiChunk("AndroidPiracyGuide.md", "📱", "android"),
         dlWikiChunk("AudioPiracyGuide.md", "🎵", "audio"),
-        dlWikiChunk("DEVTools.md", "🔧", "tools-misc"),
+        dlWikiChunk("DEVTools.md", "🖥️", "dev-tools"),
         dlWikiChunk("DownloadPiracyGuide.md", "💾", "download"),
         dlWikiChunk("EDUPiracyGuide.md", "🧠", "edu"),
-        dlWikiChunk("Game-Tools.md", "🎮", "games"),
-        dlWikiChunk("GamingPiracyGuide.md", "🔧", "tools-misc"),
+        dlWikiChunk("Game-Tools.md", "🎮🔧", "game-tools"),
+        dlWikiChunk("GamingPiracyGuide.md", "🎮", "games"),
         dlWikiChunk("LinuxGuide.md", "🐧🍏", "linux"),
         dlWikiChunk("MISCGuide.md", "📂", "misc"),
-        dlWikiChunk("NSFWPiracy.md", "🔧", "tools-misc"),
+        dlWikiChunk("NSFWPiracy.md", "🌶", "https://saidit.net/s/freemediafuckyeah/wiki/index"),
         dlWikiChunk("Non-English.md", "🌏", "non-eng"),
         dlWikiChunk("ReadingPiracyGuide.md", "📗", "reading"),
         dlWikiChunk("STORAGE.md", "🗄️", "storage"),
         dlWikiChunk("TOOLSGuide.md", "🔧", "tools-misc"),
         dlWikiChunk("TorrentPiracyGuide.md", "🌀", "torrent"),
         dlWikiChunk("VideoPiracyGuide.md", "📺", "video"),
-        dlWikiChunk("img-tools.md", "🖼️", "img-tools")
+        dlWikiChunk("img-tools.md", "🖼️🔧", "img-tools")
     ]
     return [item for sublist in wikiChunks for item in sublist]
 #--------------------------------
@@ -324,18 +329,8 @@ def doASearch(searchInput):
 ## Execute at start of script
 lineList = getAllLines()
 
-def searchInputCallback():
-    queryInput = st.session_state.text_input_key
-    doASearch(queryInput)
-    try:
-        logToGoogleSheet(queryInput)
-    except:
-        print("Google sheet error.")
-
 
 ## Streamlit code
-queryInput = st.text_input(label=" ", value="", help="Search for links in the Wiki.")
-
 if st.button("Search"):
     doASearch(queryInput)
 
@@ -345,4 +340,3 @@ if st.button("Search"):
         logToGoogleSheet(queryInput)
     except:
         print("Google sheet error.")
-
