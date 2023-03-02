@@ -33,11 +33,56 @@ coloring = False
 printRawMarkdown = False 
 #printRawMarkdown = st.checkbox('Raw')
 
-## Original script code mostly
 import requests
 
+
+#----------------Alt Indexing------------
+doAltIndexing = st.checkbox('Alt indexing', help="Includes the parent wiki page at the beginning of each result.")
+
+def addPretext(lines, preText):
+    for i in range(len(lines)):
+        lines[i] = preText + lines[i]
+    return lines
+
+def dlWikiChunk(fileName, icon, subURL):
+    #download the chunk
+    print("Downloading " + fileName + "...")
+    lines = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/" + fileName).text.split('\n')
+    print("Downloaded")
+
+    #add a pretext
+    preText = "[" + icon + "](" + "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/" + subURL + ") ► "
+    lines = addPretext(lines, preText)
+    
+    return lines
+
 @st.cache_resource(ttl=86400)
-def getAllLines():
+def alternativeWikiIndexing():
+    wikiChunks = [
+        dlWikiChunk("AdblockVPNGuide.md", "📛", "adblock-vpn-privacy"),
+        dlWikiChunk("AndroidPiracyGuide.md", "📱", "android"),
+        dlWikiChunk("AudioPiracyGuide.md", "🎵", "audio"),
+        dlWikiChunk("DEVTools.md", "🔧", "tools-misc"),
+        dlWikiChunk("DownloadPiracyGuide.md", "💾", "download"),
+        dlWikiChunk("EDUPiracyGuide.md", "🧠", "edu"),
+        dlWikiChunk("Game-Tools.md", "🎮", "games"),
+        dlWikiChunk("GamingPiracyGuide.md", "🔧", "tools-misc"),
+        dlWikiChunk("LinuxGuide.md", "🐧🍏", "linux"),
+        dlWikiChunk("MISCGuide.md", "📂", "misc"),
+        dlWikiChunk("NSFWPiracy.md", "🔧", "tools-misc"),
+        dlWikiChunk("Non-English.md", "🌏", "non-eng"),
+        dlWikiChunk("ReadingPiracyGuide.md", "📗", "reading"),
+        dlWikiChunk("STORAGE.md", "🗄️", "storage"),
+        dlWikiChunk("TOOLSGuide.md", "🔧", "tools-misc"),
+        dlWikiChunk("TorrentPiracyGuide.md", "🌀", "torrent"),
+        dlWikiChunk("VideoPiracyGuide.md", "📺", "video"),
+        dlWikiChunk("img-tools.md", "🖼️", "img-tools")
+    ]
+    return [item for sublist in wikiChunks for item in sublist]
+#--------------------------------
+
+@st.cache_resource(ttl=86400)
+def standardWikiIndexing():
     try:
         #First, try to get it from Github
         response1 = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page")
@@ -47,6 +92,14 @@ def getAllLines():
         with open('single-page', 'r') as f:
             data = f.read()
     lines = data.split('\n')
+    return lines
+
+
+def getAllLines():
+    if doAltIndexing:
+        lines = alternativeWikiIndexing()
+    else:
+        lines = standardWikiIndexing()
     return lines
 
 
@@ -194,7 +247,7 @@ def doASearch(searchInput):
 
     #show only full word matches if there are too many results
     if len(linesFoundPrev) > 200:
-        toomanywarningmsg = "Too many results. (" + str(len(linesFoundPrev)) + "). " + "Showing only full-word matches."
+        toomanywarningmsg = "Too many results (" + str(len(linesFoundPrev)) + "). " + "Showing only full-word matches."
         st.text(toomanywarningmsg)
         linesFoundPrev = getOnlyFullWordMatches(linesFoundPrev, searchInput)
 
@@ -209,7 +262,7 @@ def doASearch(searchInput):
 
     #make sure results are not too many before continuing
     if len(linesFound) > 700 and not searchInput=="⭐":
-        toomanywarningmsg = "Too many results. (" + str(len(linesFound)) + ")"
+        toomanywarningmsg = "Too many results (" + str(len(linesFound)) + ")."
         st.warning(toomanywarningmsg, icon="⚠️")
 
         #Print the section titles
