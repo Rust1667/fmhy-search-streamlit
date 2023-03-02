@@ -216,27 +216,6 @@ def filterOutTitleLines(lineList):
             sectionTitleList.append(line)
     return [filteredList, sectionTitleList]
 
-def removeHashtags(string):
-    return string.replace("#", "")
-
-def colored(word, color):
-    return ":" + color + "[" + word + "]"
-
-def highlightWord(sentence, word):
-    return sentence.replace(word, colored(word,'red'))
-
-def colorLinesFound(linesFound, filterWords):
-    coloredLinesList = []
-    filterWordsCapitalizedToo=[]
-    for word in filterWords:
-        filterWordsCapitalizedToo.append(word.capitalize())
-    filterWordsCapitalizedToo.extend(filterWords)
-    for line in linesFound:
-        for word in filterWordsCapitalizedToo:
-            line = highlightWord(line, word)
-        coloredLine = line
-        coloredLinesList.append(coloredLine)
-    return coloredLinesList
 
 
 def doASearch(searchInput):
@@ -260,7 +239,7 @@ def doASearch(searchInput):
         linesFoundPrev = getOnlyFullWordMatches(linesFoundPrev, searchInput)
 
     #rank results
-    linesFoundPrev = moveExactMatchesToFront(linesFoundPrev, searchInput)
+    #linesFoundPrev = moveExactMatchesToFront(linesFoundPrev, searchInput)
     linesFoundPrev = moveBetterMatchesToFront(linesFoundPrev, searchInput)
 
     #extract titles lines
@@ -287,11 +266,7 @@ def doASearch(searchInput):
     myFilterWords = searchInput.lower().split(' ')
 
     #create string of text to print
-    if coloring and not printRawMarkdown:
-        linesFoundColored = colorLinesFound(linesFound, myFilterWords)
-        textToPrint = "\n\n".join(linesFoundColored)
-    else:
-        textToPrint = "\n\n".join(linesFound)
+    textToPrint = "\n\n".join(linesFound)
 
     #check for porn words
     pornWords = ['nsfw', 'porn', 'onlyfans', 'xxx', 'hentai', 'sex']
