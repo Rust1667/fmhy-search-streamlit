@@ -39,7 +39,7 @@ import requests
 
 
 #----------------Alt Indexing------------
-doAltIndexing = st.checkbox('Alt indexing', help="Includes the parent wiki page at the beginning of each result.")
+doAltIndexing = True #st.checkbox('Alt indexing', help="Includes the parent wiki page at the beginning of each result.")
 
 def addPretext(lines, preText):
     for i in range(len(lines)):
@@ -102,7 +102,10 @@ def standardWikiIndexing():
 
 def getAllLines():
     if doAltIndexing:
-        lines = alternativeWikiIndexing()
+        try:
+            lines = alternativeWikiIndexing()
+        except:
+            lines = standardWikiIndexing()
     else:
         lines = standardWikiIndexing()
     return lines
