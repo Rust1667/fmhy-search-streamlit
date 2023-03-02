@@ -281,7 +281,7 @@ def doASearch(searchInput):
     else:
         st.markdown("No results found!")
         if not thereArePornWords:
-            st.info("If looking for specific media or software, try with a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools). For Live Sports go [here](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video/#wiki_.25B7_live_tv_.2F_sports).", icon="ℹ️")
+            st.info("For specific media or software, try a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools) / Live Sports [here](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video/#wiki_.25B7_live_tv_.2F_sports) / Ask in [Divolt](https://fmhy.divolt.xyz/)", icon="ℹ️")
 
     # print search results
     if not printRawMarkdown:
