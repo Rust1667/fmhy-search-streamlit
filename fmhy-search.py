@@ -61,6 +61,9 @@ def dlWikiChunk(fileName, icon, subURL):
     
     return lines
 
+def cleanLineForSearchMatchChecks(line):
+    return line.replace('https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/', '/')
+
 @st.cache_resource(ttl=86400)
 def alternativeWikiIndexing():
     wikiChunks = [
@@ -195,11 +198,19 @@ def getOnlyFullWordMatches(myList, searchQuery):
             bumped.append(myList[i])
     return bumped
 
-def getLinesThatContainAllWords(lineList, filterWords):
-    lineListFiltered = [line for line in lineList if all(
-        word.lower() in line.lower() for word in filterWords
-    )]
-    return lineListFiltered
+def getLinesThatContainAllWords(lineList, words):
+    bumped = []
+    for line in lineList:
+        if doAltIndexing:
+            lineModdedForChecking = cleanLineForSearchMatchChecks(line).lower()
+        else:
+            lineModdedForChecking = line.lower()
+        for word in words:
+            if word not in lineModdedForChecking:
+                break
+        else:
+            bumped.append(line)
+    return bumped
 
 def filterLines(lineList, searchQuery):
     filterWords = searchQuery.lower().split(' ')
