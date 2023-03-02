@@ -299,7 +299,7 @@ def doASearch(searchInput):
         st.markdown("Find them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
 
     #full nsfw section in case people look for it
-    if thereArePornWords:
+    if thereArePornWords and len(linesFound)==0:
         st.info("The full NSFW Wiki Section is [here](https://saidit.net/s/freemediafuckyeah/wiki/index).", icon="ℹ️")
 
 
