@@ -51,7 +51,7 @@ def dlWikiChunk(fileName, icon, subURL):
     print("Downloaded")
 
     #add a pretext
-    preText = "[" + icon + "](" + "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/" + subURL + ") ► "
+    preText = "[" + icon + "](" + "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/" + subURL + ") "
     lines = addPretext(lines, preText)
     
     return lines
