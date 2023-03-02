@@ -64,24 +64,24 @@ def dlWikiChunk(fileName, icon, subURL):
 @st.cache_resource(ttl=86400)
 def alternativeWikiIndexing():
     wikiChunks = [
-        dlWikiChunk("AdblockVPNGuide.md", "📛", "adblock-vpn-privacy"),
+        dlWikiChunk("VideoPiracyGuide.md", "📺", "video"),
         dlWikiChunk("AndroidPiracyGuide.md", "📱", "android"),
         dlWikiChunk("AudioPiracyGuide.md", "🎵", "audio"),
-        dlWikiChunk("DEVTools.md", "🖥️", "dev-tools"),
         dlWikiChunk("DownloadPiracyGuide.md", "💾", "download"),
         dlWikiChunk("EDUPiracyGuide.md", "🧠", "edu"),
-        dlWikiChunk("Game-Tools.md", "🎮🔧", "game-tools"),
         dlWikiChunk("GamingPiracyGuide.md", "🎮", "games"),
-        dlWikiChunk("LinuxGuide.md", "🐧🍏", "linux"),
-        dlWikiChunk("MISCGuide.md", "📂", "misc"),
-        dlWikiChunk("NSFWPiracy.md", "🌶", "https://saidit.net/s/freemediafuckyeah/wiki/index"),
-        dlWikiChunk("Non-English.md", "🌏", "non-eng"),
-        dlWikiChunk("ReadingPiracyGuide.md", "📗", "reading"),
-        dlWikiChunk("STORAGE.md", "🗄️", "storage"),
+        dlWikiChunk("Game-Tools.md", "🎮🔧", "game-tools"),
+        dlWikiChunk("AdblockVPNGuide.md", "📛", "adblock-vpn-privacy"),
         dlWikiChunk("TOOLSGuide.md", "🔧", "tools-misc"),
+        dlWikiChunk("MISCGuide.md", "📂", "misc"),
+        dlWikiChunk("ReadingPiracyGuide.md", "📗", "reading"),
         dlWikiChunk("TorrentPiracyGuide.md", "🌀", "torrent"),
-        dlWikiChunk("VideoPiracyGuide.md", "📺", "video"),
-        dlWikiChunk("img-tools.md", "🖼️🔧", "img-tools")
+        dlWikiChunk("img-tools.md", "🖼️🔧", "img-tools"),
+        dlWikiChunk("LinuxGuide.md", "🐧🍏", "linux"),
+        dlWikiChunk("DEVTools.md", "🖥️", "dev-tools"),
+        dlWikiChunk("Non-English.md", "🌏", "non-eng"),
+        dlWikiChunk("STORAGE.md", "🗄️", "storage"),
+        dlWikiChunk("NSFWPiracy.md", "🌶", "https://saidit.net/s/freemediafuckyeah/wiki/index")
     ]
     return [item for sublist in wikiChunks for item in sublist]
 #--------------------------------
