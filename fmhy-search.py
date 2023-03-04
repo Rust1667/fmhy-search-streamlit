@@ -309,6 +309,11 @@ def doASearch(searchInput):
         #st.markdown(" ")
         st.markdown("Find them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
 
+    #Some results but maybe not enough
+    if len(linesFound)>0 and len(linesFound)<=10 and not thereArePornWords:
+        with st.expander("Not what you were looking for?"):
+            st.info("For specific media or software, try a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools) / Live Sports [here](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video/#wiki_.25B7_live_tv_.2F_sports) / Ask in [Divolt](https://fmhy.divolt.xyz/)", icon="ℹ️")
+
     #full nsfw section in case people look for it
     if thereArePornWords and len(linesFound)==0:
         st.info("The full NSFW Wiki Section is [here](https://saidit.net/s/freemediafuckyeah/wiki/index).", icon="ℹ️")
