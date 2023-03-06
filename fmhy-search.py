@@ -35,6 +35,8 @@ coloring = False
 printRawMarkdown = False 
 #printRawMarkdown = st.checkbox('Raw')
 
+failedSearchInfoMsg = "For specific media or software, try a [CSE](https://github.com/nbats/FMHY/wiki/%F0%9F%94%A7-Tools#-search-tools) / Live Sports [here](https://github.com/nbats/FMHY/wiki/%F0%9F%93%BA-Movies---TV---Anime---Sports#-live-tv--sports) / Ask in [Divolt](https://fmhy.divolt.xyz/)"
+
 import requests
 
 
@@ -292,7 +294,7 @@ def doASearch(searchInput):
     else:
         st.markdown("No results found!")
         if not thereArePornWords:
-            st.info("For specific media or software, try a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools) / Live Sports [here](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video/#wiki_.25B7_live_tv_.2F_sports) / Ask in [Divolt](https://fmhy.divolt.xyz/)", icon="ℹ️")
+            st.info(failedSearchInfoMsg, icon="ℹ️")
 
     # print search results
     if not printRawMarkdown:
@@ -312,7 +314,7 @@ def doASearch(searchInput):
     #Some results but maybe not enough
     if len(linesFound)>0 and len(linesFound)<=10 and not thereArePornWords:
         with st.expander("Not what you were looking for?"):
-            st.info("For specific media or software, try a [CSE](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/tools-misc#wiki_.25B7_search_tools) / Live Sports [here](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video/#wiki_.25B7_live_tv_.2F_sports) / Ask in [Divolt](https://fmhy.divolt.xyz/)", icon="ℹ️")
+            st.info(failedSearchInfoMsg, icon="ℹ️")
 
     #full nsfw section in case people look for it
     if thereArePornWords and len(linesFound)==0:
