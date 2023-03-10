@@ -13,6 +13,9 @@ st.set_page_config(
     }
 )
 
+#import dateTimeBasedAnnouncement
+#dateTimeBasedAnnouncement.announcement()
+
 st.title("Search FMHY")
 
 with st.sidebar:
@@ -35,10 +38,10 @@ coloring = False
 printRawMarkdown = False 
 #printRawMarkdown = st.checkbox('Raw')
 
-failedSearchInfoMsg = "For specific media or software, try a [CSE](https://github.com/nbats/FMHY/wiki/%F0%9F%94%A7-Tools#-search-tools) / Live Sports [here](https://github.com/nbats/FMHY/wiki/%F0%9F%93%BA-Movies---TV---Anime---Sports#-live-tv--sports) / Ask in [Divolt](https://fmhy.divolt.xyz/)"
+failedSearchInfoMsg = "For specific media or software, try a [CSE](https://github.com/nbats/FMHY/wiki/%F0%9F%94%A7-Tools#-search-tools) / Live Sports [here](https://github.com/nbats/FMHY/wiki/%F0%9F%93%BA-Movies---TV---Anime---Sports#-live-tv--sports)" #/ Ask in [Divolt](https://fmhy.divolt.xyz/)"
 
 import requests
-
+import loggingModule
 
 #----------------Alt Indexing------------
 doAltIndexing = True #st.checkbox('Alt indexing', help="Includes the parent wiki page at the beginning of each result.")
@@ -114,46 +117,6 @@ def getAllLines():
     else:
         lines = standardWikiIndexing()
     return lines
-
-
-import datetime
-def getDateTimeString():
-    now = datetime.datetime.now()
-    dateTimeString = now.strftime("%Y/%m/%d-%H:%M:%S")
-    return dateTimeString
-
-
-from oauth2client.service_account import ServiceAccountCredentials
-import gspread
-import json
-
-@st.cache_resource(ttl=86400)
-def getAuthorizedGoogleSheet():
-    credentials = {
-      "type": st.secrets.type,
-      "project_id": st.secrets.project_id,
-      "private_key_id": st.secrets.private_key_id,
-      "private_key": st.secrets.private_key,
-      "client_email": st.secrets.client_email,
-      "client_id": st.secrets.client_id,
-      "auth_uri": st.secrets.auth_uri,
-      "token_uri": st.secrets.token_uri,
-      "auth_provider_x509_cert_url": st.secrets.auth_provider_x509_cert_url,
-      "client_x509_cert_url": st.secrets.client_x509_cert_url
-    }
-    scopes = [
-    'https://www.googleapis.com/auth/spreadsheets',
-    'https://www.googleapis.com/auth/drive'
-    ]
-    file = gspread.service_account_from_dict(credentials)
-    sheet = file.open("logger")
-    return sheet
-
-def logToGoogleSheet(stringToLog):
-    sheet = getAuthorizedGoogleSheet()
-    sheet = sheet.sheet1 #sheet inside the g-sheets document
-    dataToAppend = [getDateTimeString(), stringToLog]
-    sheet.append_row(dataToAppend, table_range="A1:B1")
 
 
 
@@ -333,6 +296,6 @@ if st.button("Search"):
     #logging
     print("searching: " + queryInput)
     try:
-        logToGoogleSheet(queryInput)
+        loggingModule.logToGoogleSheet(queryInput)
     except:
         print("Google sheet error.")
