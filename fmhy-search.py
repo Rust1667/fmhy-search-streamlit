@@ -150,18 +150,18 @@ def checkWordForWordMatch(line, searchQuery):
 def moveBetterMatchesToFront(myList, searchQuery):
     bumped = []
     notBumped = []
-    for i in range(len(myList)):
-        if checkWordForWordMatch(myList[i], searchQuery):
-            bumped.append(myList[i])
+    for element in myList:
+        if checkWordForWordMatch(element, searchQuery):
+            bumped.append(element)
         else:
-            notBumped.append(myList[i])
+            notBumped.append(element)
     return (bumped + notBumped)
 
 def getOnlyFullWordMatches(myList, searchQuery):
     bumped = []
-    for i in range(len(myList)):
-        if checkWordForWordMatch(myList[i], searchQuery):
-            bumped.append(myList[i])
+    for element in myList:
+        if checkWordForWordMatch(element, searchQuery):
+            bumped.append(element)
     return bumped
 
 def getLinesThatContainAllWords(lineList, searchQuery):
