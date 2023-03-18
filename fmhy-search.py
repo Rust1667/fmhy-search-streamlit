@@ -295,7 +295,7 @@ lineList = getAllLines()
 
 ## Streamlit code
 if st.button("Search"):
-    doASearch(queryInput)
+    doASearch(queryInput.strip())
 
     #logging
     print("searching: " + queryInput)
