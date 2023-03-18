@@ -144,7 +144,7 @@ def checkList1isInList2(list1, list2):
 
 def checkWordForWordMatch(line, searchQuery):
     lineWords = removeEmptyStringsFromList( line.lower().replace('[', ' ').replace(']', ' ').split(' ') )
-    lineWords = [element.strip() for element in lineWords]
+    lineWords = [element.strip() for element in lineWords] #doesnt work on streamlit without this line even though it works locally
     searchQueryWords = removeEmptyStringsFromList( searchQuery.lower().split(' ') )
     return checkList1isInList2(searchQueryWords, lineWords)
 
@@ -181,7 +181,7 @@ def getLinesThatContainAllWords(lineList, searchQuery):
     return bumped
 
 def filterLines(lineList, searchQuery):
-    if len(searchQuery)<=2:
+    if len(searchQuery)<=2 or (searchQuery==searchQuery.upper() and len(searchQuery)<=5):
         return getOnlyFullWordMatches(lineList, searchQuery)
     else:
         return getLinesThatContainAllWords(lineList, searchQuery)
