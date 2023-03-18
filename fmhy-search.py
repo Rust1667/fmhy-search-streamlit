@@ -144,6 +144,7 @@ def checkList1isInList2(list1, list2):
 
 def checkWordForWordMatch(line, searchQuery):
     lineWords = removeEmptyStringsFromList( line.lower().replace('[', ' ').replace(']', ' ').split(' ') )
+    lineWords = [element.strip() for element in lineWords]
     searchQueryWords = removeEmptyStringsFromList( searchQuery.lower().split(' ') )
     return checkList1isInList2(searchQueryWords, lineWords)
 
