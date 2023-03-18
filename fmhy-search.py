@@ -180,7 +180,7 @@ def getLinesThatContainAllWords(lineList, searchQuery):
     return bumped
 
 def filterLines(lineList, searchQuery):
-    if len(searchQuery)<=2 or (searchQuery==searchQuery.upper() and len(searchQuery)<=5):
+    if len(searchQuery)<=2:
         return getOnlyFullWordMatches(lineList, searchQuery)
     else:
         return getLinesThatContainAllWords(lineList, searchQuery)
