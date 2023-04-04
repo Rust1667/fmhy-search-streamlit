@@ -303,3 +303,11 @@ if st.button("Search"):
         loggingModule.logToGoogleSheet(queryInput)
     except:
         print("Google sheet error.")
+
+def search_from_URL_query():
+    queryParameters = st.experimental_get_query_params()
+    if "q" in queryParameters:
+        queryWords = queryParameters['q']
+        queryInput = " ".join(queryWords)
+        doASearch(queryInput.strip())
+search_from_URL_query()
