@@ -293,18 +293,20 @@ def doASearch(searchInput):
 lineList = getAllLines()
 
 
-## Streamlit code
-if st.button("Search"):
-    doASearch(queryInput.strip())
-
-    st.experimental_set_query_params() #clear query from URL
-
-    #logging
+def log_query(queryInput):
     print("searching: " + queryInput)
     try:
         loggingModule.logToGoogleSheet(queryInput)
     except:
         print("Google sheet error.")
+
+
+## Streamlit code
+def put_query_in_URL(queryInput):
+    queryStringInURL = queryInput.strip()
+    st.experimental_set_query_params(
+        q=queryStringInURL
+    )
 
 def search_from_URL_query():
     queryParameters = st.experimental_get_query_params()
@@ -312,11 +314,11 @@ def search_from_URL_query():
         queryWords = queryParameters['q']
         queryInput = " ".join(queryWords)
         doASearch(queryInput.strip())
+        log_query(queryInput)
 
-        #logging
-        print("searching: " + queryInput)
-        try:
-            loggingModule.logToGoogleSheet(queryInput)
-        except:
-            print("Google sheet error.")
-search_from_URL_query()
+if st.button("Search"):
+    doASearch(queryInput.strip())
+    log_query(queryInput)
+    put_query_in_URL(queryInput)
+else:
+    search_from_URL_query()
