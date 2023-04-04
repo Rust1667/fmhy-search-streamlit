@@ -297,6 +297,8 @@ lineList = getAllLines()
 if st.button("Search"):
     doASearch(queryInput.strip())
 
+    st.experimental_set_query_params() #clear query from URL
+
     #logging
     print("searching: " + queryInput)
     try:
@@ -310,7 +312,7 @@ def search_from_URL_query():
         queryWords = queryParameters['q']
         queryInput = " ".join(queryWords)
         doASearch(queryInput.strip())
-        
+
         #logging
         print("searching: " + queryInput)
         try:
