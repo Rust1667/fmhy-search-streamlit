@@ -199,6 +199,7 @@ def filterOutTitleLines(lineList):
 
 
 def doASearch(searchInput):
+    searchInput = searchInput.strip()
 
     #make sure the input is right before continuing
     if searchInput=="":
@@ -304,20 +305,23 @@ def log_query(queryInput):
 ## Streamlit code
 def put_query_in_URL(queryInput):
     queryStringInURL = queryInput.strip()
-    st.experimental_set_query_params(
-        q=queryStringInURL
-    )
+    if not queryStringInURL=="":
+        st.experimental_set_query_params(
+            q=queryStringInURL
+        )
+    else:
+        st.experimental_set_query_params()
 
 def search_from_URL_query():
     queryParameters = st.experimental_get_query_params()
     if "q" in queryParameters:
         queryWords = queryParameters['q']
         queryInput = " ".join(queryWords)
-        doASearch(queryInput.strip())
+        doASearch(queryInput)
         log_query(queryInput)
 
 if st.button("Search"):
-    doASearch(queryInput.strip())
+    doASearch(queryInput)
     log_query(queryInput)
     put_query_in_URL(queryInput)
 else:
