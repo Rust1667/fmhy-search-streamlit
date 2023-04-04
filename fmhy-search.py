@@ -310,4 +310,11 @@ def search_from_URL_query():
         queryWords = queryParameters['q']
         queryInput = " ".join(queryWords)
         doASearch(queryInput.strip())
+        
+        #logging
+        print("searching: " + queryInput)
+        try:
+            loggingModule.logToGoogleSheet(queryInput)
+        except:
+            print("Google sheet error.")
 search_from_URL_query()
