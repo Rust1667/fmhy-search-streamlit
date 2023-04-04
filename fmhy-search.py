@@ -28,7 +28,7 @@ with st.sidebar:
     st.markdown("[Github Repository for this tool (script version)](https://github.com/Rust1667/a-FMHY-search-engine)")
     st.markdown("[Other Search Tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
 
-queryInput = st.text_input(label=" ", value="", help="Search for links in the Wiki.")
+queryInputFromBox = st.text_input(label=" ", value="", help="Search for links in the Wiki.")
 
 
 ##Config
@@ -321,6 +321,7 @@ def search_from_URL_query():
         log_query(queryInput)
 
 if st.button("Search"):
+    queryInput = queryInputFromBox
     doASearch(queryInput)
     log_query(queryInput)
     put_query_in_URL(queryInput)
