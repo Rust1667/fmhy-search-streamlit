@@ -20,11 +20,10 @@ with st.sidebar:
     st.image("https://i.imgur.com/s9abZgP.png", width=100)
     st.text("Search Engine for r/FREEMEDIAHECKYEAH")
     st.markdown("Links:")
-    st.markdown("[Wiki on Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/)")
-    st.markdown("[Wiki as Raw Markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page)")
-    #st.markdown("[Github Repository for this tool (web-app)](https://github.com/Rust1667/fmhy-search-streamlit)")
-    st.markdown("[Github Repository for this tool (script version)](https://github.com/Rust1667/a-FMHY-search-engine)")
-    st.markdown("[Other Search Tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
+    st.markdown("* Wiki: [Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/), [pages.dev](https://fmhy.pages.dev/), [net](https://fmhy.net/), [Raw](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page)")
+    st.markdown("* [Github Repo (web-app)](https://github.com/Rust1667/fmhy-search-streamlit)")
+    st.markdown("* [Github Repo (script)](https://github.com/Rust1667/a-FMHY-search-engine)")
+    st.markdown("* [Other Search Tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
 
 queryInputFromBox = st.text_input(label=" ", value="", help="Search for links in the Wiki.")
 
