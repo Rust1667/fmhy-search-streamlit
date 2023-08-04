@@ -13,8 +13,6 @@ st.set_page_config(
     }
 )
 
-import dateTimeBasedAnnouncement
-dateTimeBasedAnnouncement.announcement()
 
 st.title("Search FMHY")
 
@@ -32,16 +30,15 @@ queryInputFromBox = st.text_input(label=" ", value="", help="Search for links in
 
 
 ##Config
-coloring = False 
+coloring = False
 #coloring = st.checkbox('Coloring', help="Many links won't work when this is active.")
 
-printRawMarkdown = False 
+printRawMarkdown = False
 #printRawMarkdown = st.checkbox('Raw')
 
 failedSearchInfoMsg = "For specific media or software, try a [CSE](https://github.com/nbats/FMHY/wiki/%F0%9F%94%A7-Tools#-search-tools) / Live Sports [here](https://github.com/nbats/FMHY/wiki/%F0%9F%93%BA-Movies---TV---Anime---Sports#-live-tv--sports) / Ask in [Divolt](https://fmhy.divolt.xyz/)"
 
 import requests
-import loggingModule
 
 #----------------Alt Indexing------------
 doAltIndexing = True #st.checkbox('Alt indexing', help="Includes the parent wiki page at the beginning of each result.")
@@ -294,14 +291,6 @@ def doASearch(searchInput):
 lineList = getAllLines()
 
 
-def log_query(queryInput):
-    print("searching: " + queryInput)
-    try:
-        loggingModule.logToGoogleSheet(queryInput)
-    except:
-        print("Google sheet error.")
-
-
 ## Streamlit code
 def put_query_in_URL(queryInput):
     queryStringInURL = queryInput.strip()
@@ -318,12 +307,10 @@ def search_from_URL_query():
         queryWords = queryParameters['q']
         queryInput = " ".join(queryWords)
         doASearch(queryInput)
-        log_query(queryInput)
 
 if st.button("Search"):
     queryInput = queryInputFromBox
     doASearch(queryInput)
-    log_query(queryInput)
     put_query_in_URL(queryInput)
 else:
     search_from_URL_query()
