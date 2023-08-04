@@ -7,9 +7,9 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="collapsed",
     menu_items={
-        'Get Help': 'https://github.com/Rust1667/a-FMHY-search-engine',
-        'Report a bug': "https://github.com/Rust1667/a-FMHY-search-engine",
-        'About': "https://github.com/Rust1667/a-FMHY-search-engine"
+        'Get Help': 'https://github.com/Rust1667/fmhy-search-streamlit',
+        'Report a bug': "https://github.com/Rust1667/fmhy-search-streamlit/issues",
+        'About': "https://github.com/Rust1667/fmhy-search-streamlit"
     }
 )
 
