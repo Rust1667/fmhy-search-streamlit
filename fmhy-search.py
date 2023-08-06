@@ -65,7 +65,7 @@ def dlWikiChunk(fileName, icon, subURL):
 def cleanLineForSearchMatchChecks(line):
     return line.replace('https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/', '/')
 
-@st.cache_resource(ttl=86400)
+@st.cache_resource(ttl=43200)
 def alternativeWikiIndexing():
     wikiChunks = [
         dlWikiChunk("VideoPiracyGuide.md", "📺", "video"),
@@ -90,7 +90,7 @@ def alternativeWikiIndexing():
     return [item for sublist in wikiChunks for item in sublist]
 #--------------------------------
 
-@st.cache_resource(ttl=86400)
+@st.cache_resource(ttl=43200)
 def standardWikiIndexing():
     try:
         #First, try to get it from Github
