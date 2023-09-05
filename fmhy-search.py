@@ -254,9 +254,9 @@ def doASearch(searchInput):
 
     #print search results count
     if len(linesFound)>0:
-        st.text(str(len(linesFound)) + " search results:\n")
+        st.text(str(len(linesFound)) + " search results for " + searchInput + ":\n")
     else:
-        st.markdown("No results found!")
+        st.markdown("No results found for " + searchInput + "!")
         if not thereArePornWords:
             st.info(failedSearchInfoMsg, icon="ℹ️")
 
