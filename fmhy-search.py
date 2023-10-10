@@ -55,7 +55,11 @@ def addPretext(lines, icon, baseURL, subURL):
 
         preText = "[" + icon + "](" + baseURL + subURL + curSubCategory + ") "
 
-        modified_line = preText + line
+        if any(char.isalpha() for char in line):
+            modified_line = preText + line
+        else:
+            modified_line = line
+
         modified_lines.append(modified_line)
     return modified_lines
 
