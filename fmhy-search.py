@@ -42,23 +42,35 @@ import requests
 #----------------Alt Indexing------------
 doAltIndexing = True #st.checkbox('Alt indexing', help="Includes the parent wiki page at the beginning of each result.")
 
-def addPretext(lines, preText):
-    for i in range(len(lines)):
-        lines[i] = preText + lines[i]
-    return lines
+def addPretext(lines, icon, baseURL, subURL):
+    modified_lines = []
+    curSubCategory = ""
+    for line in lines:
+        if line.startswith("# ►"):
+            curSubCategory = "#" + line.replace("# ►", "").strip().replace(" ", "-").lower()
+        if line.startswith("## ▷"):
+            curSubCategory = "#" + line.replace("## ▷", "").strip().replace(" ", "-").lower()
+        
+        preText = "[" + icon + "](" + baseURL + subURL + curSubCategory + ") "
 
-def dlWikiChunk(fileName, icon, subURL):
+        modified_line = preText + line
+        modified_lines.append(modified_line)
+    return modified_lines
+
+def dlWikiChunk(fileName, icon, redditSubURL):
+    pagesDevSiteSubURL = fileName.replace(".md", "").lower()
+    subURL = pagesDevSiteSubURL
+    
     #download the chunk
     print("Downloading " + fileName + "...")
     lines = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/" + fileName).text.split('\n')
     print("Downloaded")
 
     #add a pretext
-    if not fileName=="NSFWPiracy.md":
-        preText = "[" + icon + "](" + "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/" + subURL + ") "
-    else:
-        preText = "[" + icon + "](" + subURL + ") "
-    lines = addPretext(lines, preText)
+    redditBaseURL = "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/"
+    pagesDevSiteBaseURL = "https://fmhy.pages.dev/"
+    baseURL = pagesDevSiteBaseURL
+    lines = addPretext(lines, icon, baseURL, subURL)
     
     return lines
 
