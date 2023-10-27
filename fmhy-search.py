@@ -284,8 +284,7 @@ def doASearch(searchInput):
         st.text(str(len(linesFound)) + " search results for " + searchInput + ":\n")
     else:
         st.markdown("No results found for " + searchInput + "!")
-        if not thereArePornWords:
-            st.info(failedSearchInfoMsg, icon="ℹ️")
+        st.info(failedSearchInfoMsg, icon="ℹ️")
 
     # print search results
     if not printRawMarkdown:
@@ -303,14 +302,9 @@ def doASearch(searchInput):
         st.markdown("Find them by doing <Ctrl+F> in the [Raw markdown](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page).")
 
     #Some results but maybe not enough
-    if len(linesFound)>0 and len(linesFound)<=10 and not thereArePornWords:
+    if len(linesFound)>0 and len(linesFound)<=10:
         with st.expander("Not what you were looking for?"):
             st.info(failedSearchInfoMsg, icon="ℹ️")
-
-    #full nsfw section in case people look for it
-    if thereArePornWords and len(linesFound)==0:
-        st.info("The full NSFW Wiki Section is [here](https://saidit.net/s/freemediafuckyeah/wiki/index).", icon="ℹ️")
-
 
 
 ## Execute at start of script
