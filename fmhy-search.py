@@ -35,7 +35,7 @@ coloring = False
 printRawMarkdown = False
 #printRawMarkdown = st.checkbox('Raw')
 
-failedSearchInfoMsg = "For specific media or software, try a [CSE](https://fmhy.pages.dev/toolsguide/#search-tools) / Live Sports [here](https://fmhy.pages.dev/videopiracyguide/#live-tv--sports) / Ask in [Divolt](https://fmhy.divolt.xyz/)"
+failedSearchInfoMsg = "For specific media or software, try a [CSE](https://fmhy.pages.dev/toolsguide/#search-tools) / Live Sports [here](https://fmhy.pages.dev/videopiracyguide/#live-tv--sports) / Ask in [Discord](https://discord.gg/5W9QJKuPkD) or [Divolt](https://fmhy.divolt.xyz/)"
 
 import requests
 
