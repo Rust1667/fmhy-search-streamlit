@@ -20,7 +20,7 @@ with st.sidebar:
     st.image("https://i.imgur.com/s9abZgP.png", width=100)
     st.text("Search Engine for r/FREEMEDIAHECKYEAH")
     st.markdown("Links:")
-    st.markdown("* Wiki: [Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/), [pages.dev](https://fmhy.pages.dev/), [.tk](https://www.fmhy.tk/), [Raw](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page)")
+    st.markdown("* Wiki: [Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/), [.net](https://fmhy.net/) / [.pages](https://fmhy.pages.dev/), [.tk](https://www.fmhy.tk/) / [.vercel](https://fmhy.vercel.app/), [raw](https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page)")
     st.markdown("* [Github Repo (web-app)](https://github.com/Rust1667/fmhy-search-streamlit)")
     st.markdown("* [Github Repo (script)](https://github.com/Rust1667/a-FMHY-search-engine)")
     st.markdown("* [Other Search Tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
@@ -35,7 +35,7 @@ coloring = False
 printRawMarkdown = False
 #printRawMarkdown = st.checkbox('Raw')
 
-failedSearchInfoMsg = "For specific media or software, try a [CSE](https://fmhy.pages.dev/toolsguide/#search-tools) / Live Sports [here](https://fmhy.pages.dev/videopiracyguide/#live-tv--sports) / Ask in [Discord](https://discord.gg/5W9QJKuPkD) or [Divolt](https://fmhy.divolt.xyz/)"
+failedSearchInfoMsg = "For specific media or software, try a [CSE](https://fmhy.pages.dev/internet-tools#search-tools) / Live Sports [here](https://fmhy.pages.dev/videopiracyguide#live-tv-sports) / Ask in [Discord](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/17f8msf/public_discord_server/)"
 
 import requests
 
@@ -79,20 +79,64 @@ def addPretext(lines, icon, baseURL, subURL):
 
     return modified_lines
 
+#----------------base64 page processing------------
+import base64
+import re
+
+doBase64Decoding = True
+
+def fix_base64_string(encoded_string):
+    missing_padding = len(encoded_string) % 4
+    if missing_padding != 0:
+        encoded_string += '=' * (4 - missing_padding)
+    return encoded_string
+
+def decode_base64_in_backticks(input_string):
+    def base64_decode(match):
+        encoded_data = match.group(0)[1:-1]  # Extract content within backticks
+        decoded_bytes = base64.b64decode( fix_base64_string(encoded_data) )
+        return decoded_bytes.decode()
+
+    pattern = r"`[^`]+`"  # Regex pattern to find substrings within backticks
+    decoded_string = re.sub(pattern, base64_decode, input_string)
+    return decoded_string
+
+def remove_empty_lines(text):
+    lines = text.split('\n')  # Split the text into lines
+    non_empty_lines = [line for line in lines if line.strip()]  # Filter out empty lines
+    return '\n'.join(non_empty_lines)  # Join non-empty lines back together
+
+def extract_base64_sections(base64_page):
+    sections = base64_page.split("***")  # Split the input string by "***" to get sections
+    formatted_sections = []
+    for section in sections:
+        formatted_section = remove_empty_lines( section.strip().replace("#### ", "").replace("\n\n", " - ").replace("\n", ", ") )
+        if doBase64Decoding: formatted_section = decode_base64_in_backticks(formatted_section)
+        formatted_section = '[🔑Base64](https://fmhy.pages.dev/base64) ► ' + formatted_section
+        formatted_sections.append(formatted_section)
+    lines = formatted_sections
+    return lines
+#----------------</end>base64 page processing------------
+
+
 def dlWikiChunk(fileName, icon, redditSubURL):
-    pagesDevSiteSubURL = fileName.replace(".md", "").lower()
-    subURL = pagesDevSiteSubURL
 
     #download the chunk
     print("Downloading " + fileName + "...")
-    lines = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/" + fileName).text.split('\n')
+    page = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/" + fileName).text
     print("Downloaded")
 
     #add a pretext
     redditBaseURL = "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/"
     pagesDevSiteBaseURL = "https://fmhy.pages.dev/"
     baseURL = pagesDevSiteBaseURL
-    lines = addPretext(lines, icon, baseURL, subURL)
+    if not fileName=='base64.md':
+        pagesDevSiteSubURL = fileName.replace(".md", "").lower()
+        subURL = pagesDevSiteSubURL
+        lines = page.split('\n')
+        lines = addPretext(lines, icon, baseURL, subURL)
+    elif fileName=='base64.md':
+        lines = extract_base64_sections(page)
 
     return lines
 
@@ -124,34 +168,15 @@ def alternativeWikiIndexing():
         dlWikiChunk("DEVTools.md", "🖥️", "dev-tools"),
         dlWikiChunk("Non-English.md", "🌏", "non-eng"),
         dlWikiChunk("STORAGE.md", "🗄️", "storage"),
+        dlWikiChunk("base64.md", "🔑", "base64"),
         dlWikiChunk("NSFWPiracy.md", "🌶", "https://saidit.net/s/freemediafuckyeah/wiki/index")
     ]
-    return [item for sublist in wikiChunks for item in sublist]
+    return [item for sublist in wikiChunks for item in sublist] #Flatten a <list of lists of strings> into a <list of strings>
 #--------------------------------
 
-@st.cache_resource(ttl=43200)
-def standardWikiIndexing():
-    try:
-        #First, try to get it from Github
-        response1 = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/single-page")
-        data = response1.text
-    except:
-        #If that fails, get it from the local backup
-        with open('single-page', 'r') as f:
-            data = f.read()
-    lines = data.split('\n')
-    return lines
-
-
 def getAllLines():
-    if doAltIndexing:
-        try:
-            lines = alternativeWikiIndexing()
-        except:
-            lines = standardWikiIndexing()
-    else:
-        lines = standardWikiIndexing()
-    return lines
+    #if doAltIndexing:
+    return alternativeWikiIndexing()
 
 def removeEmptyStringsFromList(stringList):
     return [string for string in stringList if string != '']
