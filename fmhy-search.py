@@ -112,7 +112,7 @@ def extract_base64_sections(base64_page):
     for section in sections:
         formatted_section = remove_empty_lines( section.strip().replace("#### ", "").replace("\n\n", " - ").replace("\n", ", ") )
         if doBase64Decoding: formatted_section = decode_base64_in_backticks(formatted_section)
-        formatted_section = '[🔑Base64](https://fmhy.pages.dev/base64) ► ' + formatted_section
+        formatted_section = '[🔑Base64](https://rentry.co/FMHYBase64) ► ' + formatted_section
         formatted_sections.append(formatted_section)
     lines = formatted_sections
     return lines
@@ -122,9 +122,13 @@ def extract_base64_sections(base64_page):
 def dlWikiChunk(fileName, icon, redditSubURL):
 
     #download the chunk
-    print("Downloading " + fileName + "...")
-    page = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/" + fileName).text
-    print("Downloaded")
+        if not fileName=='base64.md':
+            print("Downloading " + fileName + "...")
+            page = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/" + fileName).text
+        elif fileName=='base64.md':
+            print("Downloading rentry.co/FMHYBase64...")
+            page = requests.get("https://rentry.co/FMHYBase64/raw").text.replace("\r", "")
+        print("Downloaded")
 
     #add a pretext
     redditBaseURL = "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/"
