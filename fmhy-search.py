@@ -124,7 +124,7 @@ def dlWikiChunk(fileName, icon, redditSubURL):
     #download the chunk
     if not fileName=='base64.md':
         print("Downloading " + fileName + "...")
-        page = requests.get("https://raw.githubusercontent.com/nbats/FMHYedit/main/" + fileName).text
+        page = requests.get("https://raw.githubusercontent.com/fmhy/FMHYedit/main/docs/" + fileName.lower()).text
     elif fileName=='base64.md':
         print("Downloading rentry.co/FMHYBase64...")
         page = requests.get("https://rentry.co/FMHYBase64/raw").text.replace("\r", "")
