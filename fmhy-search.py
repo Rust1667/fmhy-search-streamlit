@@ -83,7 +83,7 @@ def addPretext(lines, icon, baseURL, subURL):
 import base64
 import re
 
-doBase64Decoding = False
+doBase64Decoding = True
 
 def fix_base64_string(encoded_string):
     missing_padding = len(encoded_string) % 4
@@ -95,7 +95,10 @@ def decode_base64_in_backticks(input_string):
     def base64_decode(match):
         encoded_data = match.group(0)[1:-1]  # Extract content within backticks
         decoded_bytes = base64.b64decode( fix_base64_string(encoded_data) )
-        return decoded_bytes.decode()
+        try:
+            return decoded_bytes.decode()
+        except:
+            return encoded_data
 
     pattern = r"`[^`]+`"  # Regex pattern to find substrings within backticks
     decoded_string = re.sub(pattern, base64_decode, input_string)
