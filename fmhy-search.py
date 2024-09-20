@@ -35,7 +35,7 @@ coloring = False
 printRawMarkdown = False
 #printRawMarkdown = st.checkbox('Raw')
 
-failedSearchInfoMsg = "For specific media or software, try a [CSE](https://fmhy.pages.dev/internet-tools#search-tools) / Live Sports [here](https://fmhy.pages.dev/videopiracyguide#live-tv-sports) / Ask in [Discord](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/17f8msf/public_discord_server/)"
+failedSearchInfoMsg = "For specific media or software, try a [CSE](https://fmhy.net/internet-tools#search-tools) / Live Sports [here](https://fmhy.net/videopiracyguide#live-tv-sports) / Ask in [Discord](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/17f8msf/public_discord_server/)"
 
 import requests
 
@@ -135,7 +135,7 @@ def dlWikiChunk(fileName, icon, redditSubURL):
 
     #add a pretext
     redditBaseURL = "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/"
-    pagesDevSiteBaseURL = "https://fmhy.pages.dev/"
+    pagesDevSiteBaseURL = "https://fmhy.net/"
     baseURL = pagesDevSiteBaseURL
     if not fileName=='base64.md':
         pagesDevSiteSubURL = fileName.replace(".md", "").lower()
@@ -148,7 +148,7 @@ def dlWikiChunk(fileName, icon, redditSubURL):
     return lines
 
 def cleanLineForSearchMatchChecks(line):
-    return line.replace('https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/', '/').replace('https://fmhy.pages.dev/', '/')
+    return line.replace('https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/', '/').replace('https://fmhy.net/', '/')
 
 @st.cache_resource(ttl=43200)
 def alternativeWikiIndexing():
