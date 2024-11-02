@@ -125,7 +125,10 @@ def extract_base64_sections(base64_page):
 def dlWikiChunk(fileName, icon, redditSubURL):
 
     #download the chunk
-    if not fileName=='base64.md':
+    if fileName=='NSFWPiracy.md':
+        print("Local file not found. Downloading rentry.co/freemediafuckyeah...")
+        page = requests.get("https://rentry.co/freemediafuckyeah/raw").text.replace("\r", "")
+    elif not fileName=='base64.md':
         print("Downloading " + fileName + "...")
         page = requests.get("https://raw.githubusercontent.com/fmhy/FMHYedit/main/docs/" + fileName.lower()).text
     elif fileName=='base64.md':
