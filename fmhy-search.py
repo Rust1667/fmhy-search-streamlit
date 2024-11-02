@@ -137,7 +137,10 @@ def dlWikiChunk(fileName, icon, redditSubURL):
     redditBaseURL = "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/"
     pagesDevSiteBaseURL = "https://fmhy.net/"
     baseURL = pagesDevSiteBaseURL
-    if not fileName=='base64.md':
+    if fileName=='NSFWPiracy.md':
+        print("Local file not found. Downloading rentry.co/freemediafuckyeah...")
+        page = requests.get("https://rentry.co/freemediafuckyeah/raw").text.replace("\r", "")
+    elif not fileName=='base64.md':
         pagesDevSiteSubURL = fileName.replace(".md", "").lower()
         subURL = pagesDevSiteSubURL
         lines = page.split('\n')
