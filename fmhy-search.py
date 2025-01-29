@@ -356,11 +356,11 @@ lineList = getAllLines()
 def put_query_in_URL(queryInput):
     queryStringInURL = queryInput.strip()
     if not queryStringInURL=="":
-        st.experimental_set_query_params(
+        st.query_params(
             q=queryStringInURL
         )
     else:
-        st.experimental_set_query_params()
+        st.query_params()
 
 def search_from_URL_query():
     queryParameters = st.query_params()
