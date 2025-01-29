@@ -353,25 +353,25 @@ lineList = getAllLines()
 
 
 ## Streamlit code
-def put_query_in_URL(queryInput):
-    queryStringInURL = queryInput.strip()
-    if not queryStringInURL=="":
-        st.query_params(
-            q=queryStringInURL
-        )
-    else:
-        st.query_params()
+# def put_query_in_URL(queryInput):
+#     queryStringInURL = queryInput.strip()
+#     if not queryStringInURL=="":
+#         st.query_params(
+#             q=queryStringInURL
+#         )
+#     else:
+#         st.query_params()
 
-def search_from_URL_query():
-    queryParameters = st.query_params()
-    if "q" in queryParameters:
-        queryWords = queryParameters['q']
-        queryInput = " ".join(queryWords)
-        doASearch(queryInput)
+# def search_from_URL_query():
+#     queryParameters = st.query_params()
+#     if "q" in queryParameters:
+#         queryWords = queryParameters['q']
+#         queryInput = " ".join(queryWords)
+#         doASearch(queryInput)
 
 if st.button("Search"):
     queryInput = queryInputFromBox
     doASearch(queryInput)
-    put_query_in_URL(queryInput)
+    # put_query_in_URL(queryInput)
 else:
-    search_from_URL_query()
+    # search_from_URL_query()
