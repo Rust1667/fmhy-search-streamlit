@@ -178,9 +178,9 @@ def alternativeWikiIndexing():
         dlWikiChunk("LinuxGuide.md", "🐧🍏", "linux"),
         dlWikiChunk("DEVTools.md", "🖥️", "dev-tools"),
         dlWikiChunk("Non-English.md", "🌏", "non-eng"),
-        dlWikiChunk("STORAGE.md", "🗄️", "storage"),
-        dlWikiChunk("base64.md", "🔑", "base64"),
-        dlWikiChunk("NSFWPiracy.md", "🌶", "https://saidit.net/s/freemediafuckyeah/wiki/index")
+        dlWikiChunk("STORAGE.md", "🗄️", "storage")
+        # dlWikiChunk("base64.md", "🔑", "base64"),
+        # dlWikiChunk("NSFWPiracy.md", "🌶", "https://saidit.net/s/freemediafuckyeah/wiki/index")
     ]
     return [item for sublist in wikiChunks for item in sublist] #Flatten a <list of lists of strings> into a <list of strings>
 #--------------------------------
@@ -363,7 +363,7 @@ def put_query_in_URL(queryInput):
         st.experimental_set_query_params()
 
 def search_from_URL_query():
-    queryParameters = st.experimental_get_query_params()
+    queryParameters = st.query_params()
     if "q" in queryParameters:
         queryWords = queryParameters['q']
         queryInput = " ".join(queryWords)
