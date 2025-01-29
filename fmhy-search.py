@@ -373,5 +373,5 @@ if st.button("Search"):
     queryInput = queryInputFromBox
     doASearch(queryInput)
     # put_query_in_URL(queryInput)
-else:
+# else:
     # search_from_URL_query()
