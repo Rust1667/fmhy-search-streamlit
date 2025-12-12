@@ -35,7 +35,7 @@ coloring = False
 printRawMarkdown = False
 #printRawMarkdown = st.checkbox('Raw')
 
-failedSearchInfoMsg = "For specific media or software, try a [CSE](https://fmhy.net/internet-tools#search-tools) / Live Sports [here](https://fmhy.net/videopiracyguide#live-tv-sports) / Ask in [Discord](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/17f8msf/public_discord_server/)"
+failedSearchInfoMsg = "For specific media or software, try a [CSE](https://fmhy.net/internet-tools#custom-search-engines) / Live Sports [here](https://fmhy.net/videopiracyguide#live-tv-sports) / Ask in [Discord](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/17f8msf/public_discord_server/)"
 
 import requests
 
