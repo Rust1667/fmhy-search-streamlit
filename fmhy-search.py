@@ -20,7 +20,7 @@ with st.sidebar:
     st.image("https://i.imgur.com/s9abZgP.png", width=100)
     st.text("Search Engine for r/FREEMEDIAHECKYEAH")
     st.markdown("Links:")
-    st.markdown("* Wiki: [Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/), [.net](https://fmhy.net/) / [.pages](https://fmhy.pages.dev/), [.tk](https://www.fmhy.tk/) / [.vercel](https://fmhy.vercel.app/), [raw](https://api.fmhy.net/single-page)")
+    st.markdown("* Wiki: [Reddit](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index/), [.net](https://fmhy.net/) / [.pages](https://fmhy.pages.dev/) / [.vercel](https://fmhy.vercel.app/), [raw](https://api.fmhy.net/single-page)")
     st.markdown("* [Github Repo (web-app)](https://github.com/Rust1667/fmhy-search-streamlit)")
     st.markdown("* [Github Repo (script)](https://github.com/Rust1667/a-FMHY-search-engine)")
     st.markdown("* [Other Search Tools for FMHY](https://www.reddit.com/r/FREEMEDIAHECKYEAH/comments/105xraz/howto_search_fmhy/)")
