@@ -130,10 +130,10 @@ def dlWikiChunk(fileName, icon, redditSubURL):
         page = requests.get("https://rentry.co/freemediafuckyeah/raw").text.replace("\r", "")
     elif not fileName=='base64.md':
         print("Downloading " + fileName + "...")
-        page = requests.get("https://raw.githubusercontent.com/fmhy/FMHYedit/main/docs/" + fileName.lower()).text
+        page = requests.get("https://raw.githubusercontent.com/fmhy/edit/refs/heads/main/docs/" + fileName.lower()).text
     elif fileName=='base64.md':
-        print("Downloading rentry.co/FMHYBase64...")
-        page = requests.get("https://rentry.co/FMHYBase64/raw").text.replace("\r", "")
+        print("Downloading rentry.co/FMHYB64...")
+        page = requests.get("https://rentry.co/FMHYB64/raw").text.replace("\r", "")
     print("Downloaded")
 
     #add a pretext
@@ -156,29 +156,29 @@ def cleanLineForSearchMatchChecks(line):
 @st.cache_resource(ttl=43200)
 def alternativeWikiIndexing():
     wikiChunks = [
-        dlWikiChunk("VideoPiracyGuide.md", "📺", "video"),
-        dlWikiChunk("AI.md", "🤖", "ai"),
-        dlWikiChunk("Android-iOSGuide.md", "📱", "android"),
-        dlWikiChunk("AudioPiracyGuide.md", "🎵", "audio"),
-        dlWikiChunk("DownloadPiracyGuide.md", "💾", "download"),
-        dlWikiChunk("EDUPiracyGuide.md", "🧠", "edu"),
-        dlWikiChunk("GamingPiracyGuide.md", "🎮", "games"),
-        dlWikiChunk("AdblockVPNGuide.md", "📛", "adblock-vpn-privacy"),
-        dlWikiChunk("System-Tools.md", "💻", "system-tools"),
-        dlWikiChunk("File-Tools.md", "🗃️", "file-tools"),
-        dlWikiChunk("Internet-Tools.md", "🔗", "internet-tools"),
-        dlWikiChunk("Social-Media-Tools.md", "💬", "social-media"),
-        dlWikiChunk("Text-Tools.md", "📝", "text-tools"),
-        dlWikiChunk("Video-Tools.md", "📼", "video-tools"),
-        dlWikiChunk("MISCGuide.md", "📂", "misc"),
-        dlWikiChunk("ReadingPiracyGuide.md", "📗", "reading"),
-        dlWikiChunk("TorrentPiracyGuide.md", "🌀", "torrent"),
+        dlWikiChunk("video.md", "📺", "video"),
+        dlWikiChunk("ai.md", "🤖", "ai"),
+        dlWikiChunk("mobile.md", "📱", "android"),
+        dlWikiChunk("audio.md", "🎵", "audio"),
+        dlWikiChunk("downloading.md", "💾", "download"),
+        dlWikiChunk("educational.md", "🧠", "edu"),
+        dlWikiChunk("gaming.md", "🎮", "games"),
+        dlWikiChunk("privacy.md", "📛", "adblock-vpn-privacy"),
+        dlWikiChunk("system-tools.md", "💻", "system-tools"),
+        dlWikiChunk("file-tools.md", "🗃️", "file-tools"),
+        dlWikiChunk("internet-tools.md", "🔗", "internet-tools"),
+        dlWikiChunk("social-media-tools.md", "💬", "social-media"),
+        dlWikiChunk("text-tools.md", "📝", "text-tools"),
+        dlWikiChunk("video-tools.md", "📼", "video-tools"),
+        dlWikiChunk("misc.md", "📂", "misc"),
+        dlWikiChunk("reading.md", "📗", "reading"),
+        dlWikiChunk("torrenting.md", "🌀", "torrent"),
         dlWikiChunk("img-tools.md", "📷", "img-tools"),
         dlWikiChunk("gaming-tools.md", "👾", "gaming-tools"),
-        dlWikiChunk("LinuxGuide.md", "🐧🍏", "linux"),
-        dlWikiChunk("DEVTools.md", "🖥️", "dev-tools"),
-        dlWikiChunk("Non-English.md", "🌏", "non-eng"),
-        dlWikiChunk("STORAGE.md", "🗄️", "storage")
+        dlWikiChunk("linux-macos.md", "🐧🍏", "linux"),
+        dlWikiChunk("developer-tools.md", "🖥️", "dev-tools"),
+        dlWikiChunk("non-english.md", "🌏", "non-eng"),
+        dlWikiChunk("storage.md", "🗄️", "storage")
         # dlWikiChunk("base64.md", "🔑", "base64"),
         # dlWikiChunk("NSFWPiracy.md", "🌶", "https://saidit.net/s/freemediafuckyeah/wiki/index")
     ]
